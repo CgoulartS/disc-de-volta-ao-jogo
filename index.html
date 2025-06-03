@@ -65,16 +65,12 @@
 </head>
 <body>
   <h1>Teste DISC – De Volta pro Jogo</h1>
-
   <div class="intro">
-    <h2>Bem-vindo(a)!</h2>
-    <p>Este teste DISC foi desenvolvido para te ajudar a identificar seu perfil comportamental predominante, com base nas suas preferências pessoais e profissionais.</p>
-    <p>Você verá blocos com 4 afirmações. Em cada bloco, escolha:</p>
+    <p>Este teste DISC ajuda você a identificar seu perfil comportamental predominante. Em cada bloco, escolha:</p>
     <ul>
-      <li><strong>1 alternativa que mais combina com você</strong></li>
-      <li><strong>1 alternativa que menos combina com você</strong></li>
+      <li><strong>1 alternativa que MAIS combina com você</strong></li>
+      <li><strong>1 alternativa que MENOS combina com você</strong></li>
     </ul>
-    <p>Vamos começar!</p>
   </div>
 
   <form id="discForm">
@@ -113,58 +109,55 @@
         const title = document.createElement("p");
         title.innerHTML = `<strong>Bloco ${i + 1}</strong>`;
         div.appendChild(title);
-        bloco.forEach((texto, j) => {
-          const label = document.createElement("label");
-          label.innerHTML = `${letras[j]}: ${texto}`;
-          const select = document.createElement("select");
-          select.name = `bloco${i}_opcao${j}`;
-          ["", "Mais", "Menos"].forEach(val => {
-            const option = document.createElement("option");
-            option.value = val;
-            option.innerText = val || "Escolha...";
-            select.appendChild(option);
-          });
-          label.appendChild(select);
-          div.appendChild(label);
+
+        bloco.forEach((frase, j) => {
+          const p = document.createElement("p");
+          p.innerText = `${letras[j]}: ${frase}`;
+          div.appendChild(p);
         });
+
+        const maisSelect = document.createElement("select");
+        maisSelect.name = `bloco${i}_mais`;
+        maisSelect.innerHTML = `<option value="">Mais...</option>` + letras.map(l => `<option value="${l}">${l}</option>`).join('');
+        div.appendChild(maisSelect);
+
+        const menosSelect = document.createElement("select");
+        menosSelect.name = `bloco${i}_menos`;
+        menosSelect.innerHTML = `<option value="">Menos...</option>` + letras.map(l => `<option value="${l}">${l}</option>`).join('');
+        div.appendChild(menosSelect);
+
         form.appendChild(div);
       });
     }
 
     function calcularPerfil() {
-      const form = document.getElementById("discForm");
-      const nome = form.querySelector("input[name='nome']").value.trim();
-      const email = form.querySelector("input[name='email']").value.trim();
-      const whatsapp = form.querySelector("input[name='whatsapp']").value.trim();
+      const nome = document.querySelector("input[name='nome']").value.trim();
+      const email = document.querySelector("input[name='email']").value.trim();
+      const whatsapp = document.querySelector("input[name='whatsapp']").value.trim();
 
       if (!nome || !email || !whatsapp) {
-        alert("Por favor, preencha todos os dados pessoais.");
+        alert("Preencha todos os campos pessoais antes de enviar.");
         return;
       }
 
-      const selects = form.querySelectorAll("select");
       const contagem = { D: 0, I: 0, S: 0, C: 0 };
 
       for (let i = 0; i < blocos.length; i++) {
-        const blocoSelects = [...selects].slice(i * 4, i * 4 + 4);
-        let maisSelecionado = 0;
-        let menosSelecionado = 0;
+        const mais = document.querySelector(`select[name='bloco${i}_mais']`).value;
+        const menos = document.querySelector(`select[name='bloco${i}_menos']`).value;
 
-        blocoSelects.forEach((select, j) => {
-          if (select.value === "Mais") {
-            contagem[letras[j]]++;
-            maisSelecionado++;
-          }
-          if (select.value === "Menos") {
-            contagem[letras[j]]--;
-            menosSelecionado++;
-          }
-        });
-
-        if (maisSelecionado !== 1 || menosSelecionado !== 1) {
-          alert(`Por favor, selecione 1 "Mais" e 1 "Menos" no Bloco ${i + 1}.`);
+        if (!mais || !menos) {
+          alert(`Selecione uma opção Mais e Menos no Bloco ${i + 1}`);
           return;
         }
+
+        if (mais === menos) {
+          alert(`Você não pode selecionar a mesma letra como Mais e Menos no Bloco ${i + 1}`);
+          return;
+        }
+
+        contagem[mais] += 1;
+        contagem[menos] -= 1;
       }
 
       const maior = Object.keys(contagem).reduce((a, b) => contagem[a] > contagem[b] ? a : b);
