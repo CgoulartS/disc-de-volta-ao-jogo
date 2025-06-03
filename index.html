@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teste DISC – De Volta pro Jogo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #0e0e0e;
+    }
+    .question, .personal-data {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .question p, .personal-data p {
+      margin-bottom: 0.5rem;
+    }
+    select, input[type="text"], input[type="email"] {
+      margin: 0.25rem 0;
+      padding: 0.5rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    button {
+      background-color: #008060;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #e5ffe5;
+      border-left: 6px solid #00a86b;
+      display: none;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Teste DISC – De Volta pro Jogo</h1>
+  <form id="discForm">
+    <div class="personal-data">
+      <p><strong>Seus dados</strong></p>
+      <label>Nome completo:<br><input type="text" name="nome" required></label><br>
+      <label>Email:<br><input type="email" name="email" required></label><br>
+      <label>WhatsApp (com DDD):<br><input type="text" name="whatsapp" required></label>
+    </div>
+  </form>
+  <button onclick="calcularPerfil()">Ver Resultado</button>
+
+  <div class="result" id="resultado"></div>
+
+  <script>
+    const blocos = [
+      ["Resolvo rápido os problemas", "Gosto de motivar as pessoas", "Sou paciente e tranquilo(a)", "Cuido dos detalhes com atenção"],
+      ["Tomo decisões com facilidade", "Me comunico com facilidade", "Procuro apoiar os outros", "Sigo regras com precisão"],
+      ["Sou competitivo(a)", "Sou otimista", "Evito conflitos", "Gosto de procedimentos"],
+      ["Sou focado(a) em metas", "Faço amizades com facilidade", "Sou leal", "Sou analítico(a)"],
+      ["Gosto de desafiar sistemas", "Gosto de conversar", "Sou emocionalmente estável", "Prezo pela organização"],
+      ["Não temo riscos", "Me entroso fácil", "Faço o que me pedem", "Avalio os fatos"],
+      ["Tomo iniciativa", "Gosto de ser notado(a)", "Sou calmo(a)", "Sou detalhista"],
+      ["Lidero quando preciso", "Falo com entusiasmo", "Gosto de rotina", "Sigo processos"],
+      ["Enfrento desafios", "Contagio com minha energia", "Valorizo a harmonia", "Prezo por exatidão"],
+      ["Tenho senso de urgência", "Falo bastante", "Acolho as pessoas", "Sigo normas"],
+      ["Gosto de estar no controle", "Gosto de influenciar", "Me adapto", "Analiso antes de opinar"],
+      ["Sou determinado(a)", "Gosto de expor ideias", "Sigo uma rotina", "Reviso com calma"]
+    ];
+
+    const letras = ["A", "B", "C", "D"];
+
+    function montarFormulario() {
+      const form = document.getElementById("discForm");
+      blocos.forEach((bloco, i) => {
+        const div = document.createElement("div");
+        div.className = "question";
+        const p = document.createElement("p");
+        p.innerText = `Bloco ${i + 1}`;
+        div.appendChild(p);
+
+        bloco.forEach((texto, j) => {
+          const label = document.createElement("label");
+          label.innerText = `${letras[j]}: ${texto}`;
+          label.style.display = "block";
+          const select = document.createElement("select");
+          select.name = `bloco${i}_opcao${j}`;
+          ["", "Mais", "Menos"].forEach(val => {
+            const option = document.createElement("option");
+            option.value = val;
+            option.innerText = val || "Escolha...";
+            select.appendChild(option);
+          });
+          label.appendChild(select);
+          div.appendChild(label);
+        });
+        form.appendChild(div);
+      });
+    }
+
+    function calcularPerfil() {
+      const form = document.getElementById("discForm");
+      const nome = form.querySelector("input[name='nome']").value;
+      const email = form.querySelector("input[name='email']").value;
+      const whatsapp = form.querySelector("input[name='whatsapp']").value;
+
+      const selects = document.querySelectorAll("select");
+      const contagem = { D: 0, I: 0, S: 0, C: 0 };
+      selects.forEach((s, index) => {
+        const valor = s.value;
+        if (valor === "Mais" || valor === "Menos") {
+          const letra = letras[index % 4];
+          contagem[letra] += valor === "Mais" ? 1 : -1;
+        }
+      });
+
+      const maior = Object.keys(contagem).reduce((a, b) => contagem[a] > contagem[b] ? a : b);
+      const descricoes = {
+        D: "Dominância\n\nFoco: Resultados, ação e desafios\nPontos Fortes: Determinação, proatividade, foco em metas\nPontos de Atenção: Pode ser impulsivo(a) ou impaciente\nEm Entrevistas: Vá direto ao ponto, mas ouça com atenção\n\nAmbiente ideal: Onde possa tomar decisões rápidas, com autonomia e metas claras\nMotivadores: Desafios, liberdade de ação, superação de metas",
+        I: "Influência\n\nFoco: Pessoas, comunicação, inspiração\nPontos Fortes: Empatia, entusiasmo, capacidade de conexão\nPontos de Atenção: Pode se perder nos detalhes ou parecer superficial\nEm Entrevistas: Use sua energia com clareza e foco\n\nAmbiente ideal: Colaborativo, criativo, com espaço para expressar ideias\nMotivadores: Reconhecimento, liberdade de expressão, interações sociais",
+        S: "Estabilidade\n\nFoco: Apoio, segurança, previsibilidade\nPontos Fortes: Lealdade, consistência, empatia silenciosa\nPontos de Atenção: Pode resistir a mudanças ou se anular demais\nEm Entrevistas: Destaque sua constância, escuta e comprometimento\n\nAmbiente ideal: Estruturado, com rotina e equipe cooperativa\nMotivadores: Estabilidade, pertencimento, clareza nas regras",
+        C: "Conformidade\n\nFoco: Precisão, qualidade, excelência\nPontos Fortes: Organização, atenção aos detalhes, lógica\nPontos de Atenção: Pode ser crítico demais ou travar em decisões rápidas\nEm Entrevistas: Traga dados, preparo e mostre flexibilidade\n\nAmbiente ideal: Com normas claras, espaço para planejamento e padrões elevados\nMotivadores: Reconhecimento técnico, ordem, segurança"
+      };
+
+      const resultadoTexto = `Nome: ${nome}\nEmail: ${email}\nWhatsApp: ${whatsapp}\n\nSeu perfil predominante é: ${maior}\n\n${descricoes[maior]}`;
+      document.getElementById("resultado").style.display = "block";
+      document.getElementById("resultado").innerText = resultadoTexto;
+
+      // Futuro: enviar para backend/API aqui
+      console.log("Resultado submetido:", { nome, email, whatsapp, perfil: maior, detalhes: descricoes[maior] });
+    }
+
+    montarFormulario();
+  </script>
+</body>
+</html>
