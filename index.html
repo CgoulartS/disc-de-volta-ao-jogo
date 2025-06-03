@@ -8,27 +8,28 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
+      background-color: #EEF3F8;
+      color: #38434F;
       max-width: 900px;
       margin: 0 auto;
       padding: 2rem;
     }
     h1, h2 {
       text-align: center;
+      color: #0A66C2;
     }
     .intro {
       margin-bottom: 2rem;
-      padding: 1rem;
+      padding: 1.5rem;
       background-color: #fff;
-      border-radius: 8px;
+      border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     .form-block {
       margin-bottom: 2rem;
-      padding: 1rem;
+      padding: 1.5rem;
       background-color: #fff;
-      border-radius: 8px;
+      border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     label {
@@ -37,28 +38,28 @@
     }
     input, select {
       width: 100%;
-      padding: 0.5rem;
+      padding: 0.6rem;
       margin-bottom: 1rem;
-      border-radius: 4px;
+      border-radius: 6px;
       border: 1px solid #ccc;
     }
     button {
       display: block;
-      margin: 0 auto;
-      background-color: #008060;
+      margin: 2rem auto 0;
+      background-color: #0A66C2;
       color: #fff;
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: 0.9rem 2rem;
       font-size: 1rem;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
     }
     .result {
-      background-color: #e8fce8;
-      border-left: 5px solid #00a86b;
-      padding: 1rem;
+      background-color: #DFF6E0;
+      border-left: 5px solid #28a745;
+      padding: 1.5rem;
       margin-top: 2rem;
-      display: none;
+      border-radius: 12px;
       white-space: pre-wrap;
     }
   </style>
@@ -99,7 +100,8 @@
       ["Gosto de estar no controle", "Gosto de influenciar", "Me adapto", "Analiso antes de opinar"],
       ["Sou determinado(a)", "Gosto de expor ideias", "Sigo uma rotina", "Reviso com calma"]
     ];
-    const letras = ["A", "B", "C", "D"];
+
+    const letras = ["D", "I", "S", "C"];
 
     function montarFormulario() {
       const form = document.getElementById("discForm");
@@ -160,16 +162,30 @@
         contagem[menos] -= 1;
       }
 
-      const maior = Object.keys(contagem).reduce((a, b) => contagem[a] > contagem[b] ? a : b);
-      const descricoes = {
-        D: "Dominância\n\nFoco: Resultados, ação e desafios\nPontos Fortes: Determinação, proatividade, foco em metas\nPontos de Atenção: Pode ser impulsivo(a) ou impaciente\nEm Entrevistas: Vá direto ao ponto, mas ouça com atenção",
-        I: "Influência\n\nFoco: Pessoas, comunicação, inspiração\nPontos Fortes: Empatia, entusiasmo, capacidade de conexão\nPontos de Atenção: Pode se perder nos detalhes ou parecer superficial\nEm Entrevistas: Use sua energia com clareza e foco",
-        S: "Estabilidade\n\nFoco: Apoio, segurança, previsibilidade\nPontos Fortes: Lealdade, consistência, empatia silenciosa\nPontos de Atenção: Pode resistir a mudanças ou se anular demais\nEm Entrevistas: Destaque sua constância, escuta e comprometimento",
-        C: "Conformidade\n\nFoco: Precisão, qualidade, excelência\nPontos Fortes: Organização, atenção aos detalhes, lógica\nPontos de Atenção: Pode ser crítico demais ou travar em decisões rápidas\nEm Entrevistas: Traga dados, preparo e mostre flexibilidade"
+      const perfil = Object.keys(contagem).reduce((a, b) => contagem[a] > contagem[b] ? a : b);
+
+      const analises = {
+        D: `**Dominância**\n\nPessoas com perfil D são líderes natos, orientadas a resultados e decisões rápidas.\n\n• Pontos fortes: proatividade, coragem, liderança, foco em metas.\n• Pontos de melhoria: impaciência, tendência ao controle, comunicação direta demais.\n• Estilo de comunicação: direto, objetivo, impessoal.\n• Ambientes ideais: desafiadores, com autonomia e metas claras.\n• Dica: desenvolver escuta ativa e empatia estratégica pode equilibrar sua força de decisão.`,
+
+        I: `**Influência**\n\nPessoas com perfil I se destacam pela sociabilidade, entusiasmo e comunicação.\n\n• Pontos fortes: empatia, carisma, persuasão, otimismo.\n• Pontos de melhoria: dispersão, dificuldade com detalhes e prazos.\n• Estilo de comunicação: amigável, informal, expressivo.\n• Ambientes ideais: colaborativos, criativos, livres.\n• Dica: estruturar a comunicação e o planejamento pode aumentar sua confiabilidade.`,
+
+        S: `**Estabilidade**\n\nPessoas com perfil S são constantes, acolhedoras e buscam harmonia.\n\n• Pontos fortes: lealdade, escuta, paciência, confiabilidade.\n• Pontos de melhoria: resistência à mudança, passividade diante de conflitos.\n• Estilo de comunicação: gentil, afetuoso, calmo.\n• Ambientes ideais: seguros, com rotina clara e apoio mútuo.\n• Dica: desenvolver posicionamento assertivo fortalece sua presença.`,
+
+        C: `**Conformidade**\n\nPessoas com perfil C prezam pela excelência, precisão e lógica.\n\n• Pontos fortes: análise, organização, consistência, senso crítico.\n• Pontos de melhoria: perfeccionismo, lentidão na tomada de decisões, rigidez.\n• Estilo de comunicação: técnico, estruturado, reservado.\n• Ambientes ideais: bem planejados, com regras claras e padrão de qualidade.\n• Dica: trabalhar flexibilidade e tolerância ao erro pode ampliar sua influência.`
       };
 
+      const result = `Nome: ${nome}\nEmail: ${email}\nWhatsApp: ${whatsapp}\n\nPerfil predominante: ${perfil}\n\n${analises[perfil]}`;
+      document.getElementById("resultado").innerText = result;
       document.getElementById("resultado").style.display = "block";
-      document.getElementById("resultado").innerText = `Nome: ${nome}\nEmail: ${email}\nWhatsApp: ${whatsapp}\n\nPerfil predominante: ${maior} - ${descricoes[maior]}`;
+
+      // Envio para Google Sheets
+      fetch("https://script.google.com/macros/s/AKfycbz7F5_05OjLpLkbhuAXjOKsZi-I5uDZOV3S-bJPCjs_MeIYqCKcJpGOKeor-WRNXisF/exec", {
+        method: "POST",
+        body: JSON.stringify({ nome, email, whatsapp, perfil, ...contagem }),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => console.log("Enviado ao Sheets"))
+      .catch(err => console.error("Erro no envio", err));
     }
 
     montarFormulario();
