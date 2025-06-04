@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resultado DISC – De Volta pro Jogo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste DISC – De Volta pro Jogo</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f3f6f9;
       margin: 0;
       padding: 20px;
-      color: #1f1f1f;
     }
     .container {
       max-width: 800px;
@@ -19,113 +18,111 @@
       border-radius: 8px;
       padding: 24px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      position: relative;
-    }
-    .logo {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      width: 60px;
-      height: auto;
     }
     h1 {
       color: #0077b5;
     }
-    .avatar {
-      font-size: 48px;
-      margin-bottom: 8px;
+    .form-group {
+      margin-bottom: 16px;
     }
-    .section {
-      margin-top: 24px;
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
     }
-    .section h2 {
-      font-size: 20px;
-      color: #333;
-      margin-bottom: 8px;
-      border-left: 4px solid #0077b5;
-      padding-left: 8px;
+    select, input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
-    .section p {
-      margin-bottom: 12px;
-      line-height: 1.6;
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #0077b5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img class="logo" src="https://media.licdn.com/dms/image/v2/D4D0BAQEfRmeRxUz9XA/company-logo_100_100/B4DZb9lZNkIAAc-/0/1748011161295/cgs_consultoria_e_trinamento_logo?e=1754524800&v=beta&t=oFxXi5QHdvnplK77gyruTpUWd8weHZnaCmKDxtI597s" alt="Logo CGS Consultoria">
-    <div id="resultado">
-      <h1>Carregando seu perfil DISC...</h1>
+    <h1>Teste DISC – De Volta pro Jogo</h1>
+    <div id="formulario">
+      <div class="form-group">
+        <label for="nome">Nome completo:</label>
+        <input type="text" id="nome">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email">
+      </div>
+      <div class="form-group">
+        <label for="whatsapp">WhatsApp (com DDD):</label>
+        <input type="text" id="whatsapp">
+      </div>
+
+      <!-- Bloco 1 como exemplo -->
+      <div class="form-group">
+        <label>Bloco 1</label>
+        <label>A: Resolvo rápido os problemas</label>
+        <select id="b1a">
+          <option value="">Escolha...</option>
+          <option value="Mais">Mais</option>
+          <option value="Menos">Menos</option>
+        </select>
+        <label>B: Gosto de motivar as pessoas</label>
+        <select id="b1b">
+          <option value="">Escolha...</option>
+          <option value="Mais">Mais</option>
+          <option value="Menos">Menos</option>
+        </select>
+        <label>C: Sou paciente e tranquilo(a)</label>
+        <select id="b1c">
+          <option value="">Escolha...</option>
+          <option value="Mais">Mais</option>
+          <option value="Menos">Menos</option>
+        </select>
+        <label>D: Cuido dos detalhes com atenção</label>
+        <select id="b1d">
+          <option value="">Escolha...</option>
+          <option value="Mais">Mais</option>
+          <option value="Menos">Menos</option>
+        </select>
+      </div>
+
+      <button onclick="verResultado()">Ver Resultado</button>
     </div>
   </div>
 
   <script>
-    const perfil = localStorage.getItem("perfilDISC") || "D";
+    function verResultado() {
+      // Código de exemplo apenas para Bloco 1
+      const respostas = {
+        D: document.getElementById("b1a").value,
+        I: document.getElementById("b1b").value,
+        S: document.getElementById("b1c").value,
+        C: document.getElementById("b1d").value,
+      };
 
-    const avatares = {
-      D: "⚡️",
-      I: "🌟",
-      S: "🌿",
-      C: "⚖️"
-    };
+      const pontuacao = { D: 0, I: 0, S: 0, C: 0 };
 
-    const perfis = {
-      D: {
-        nome: "Dominância",
-        cor: "#c62828",
-        conteudo: `
-          <div class="avatar">⚡️</div>
-          <h1>Perfil D - Dominância</h1>
-          <div class="section"><h2>Identidade Comportamental</h2>
-          <p>Pessoas do tipo D são focadas, determinadas e orientadas para resultados...</p></div>
-          <div class="section"><h2>Características principais</h2>
-          <p>Assertividade, foco em metas, decisão rápida, autoconfiança.</p></div>
-          <div class="section"><h2>Forças naturais</h2><p>Liderança, visão estratégica, eficiência.</p></div>
-          <div class="section"><h2>Desenvolvimento</h2><p>Trabalhar escuta, empatia e delegação.</p></div>
-        `
-      },
-      I: {
-        nome: "Influência",
-        cor: "#fbc02d",
-        conteudo: `
-          <div class="avatar">🌟</div>
-          <h1>Perfil I - Influência</h1>
-          <div class="section"><h2>Identidade Comportamental</h2>
-          <p>Comunicativo, empático, cativante...</p></div>
-          <div class="section"><h2>Características principais</h2><p>Carisma, conexão, otimismo.</p></div>
-          <div class="section"><h2>Forças naturais</h2><p>Inspira, motiva, envolve.</p></div>
-          <div class="section"><h2>Desenvolvimento</h2><p>Foco, escuta e gestão de tempo.</p></div>
-        `
-      },
-      S: {
-        nome: "Estabilidade",
-        cor: "#2e7d32",
-        conteudo: `
-          <div class="avatar">🌿</div>
-          <h1>Perfil S - Estabilidade</h1>
-          <div class="section"><h2>Identidade Comportamental</h2>
-          <p>Calmo, paciente, confiável...</p></div>
-          <div class="section"><h2>Características principais</h2><p>Lealdade, persistência, apoio.</p></div>
-          <div class="section"><h2>Forças naturais</h2><p>Harmonia, escuta, constância.</p></div>
-          <div class="section"><h2>Desenvolvimento</h2><p>Posicionamento, autonomia.</p></div>
-        `
-      },
-      C: {
-        nome: "Conformidade",
-        cor: "#1565c0",
-        conteudo: `
-          <div class="avatar">⚖️</div>
-          <h1>Perfil C - Conformidade</h1>
-          <div class="section"><h2>Identidade Comportamental</h2>
-          <p>Analítico, preciso, disciplinado...</p></div>
-          <div class="section"><h2>Características principais</h2><p>Excelência, organização, lógica.</p></div>
-          <div class="section"><h2>Forças naturais</h2><p>Detalhes, métricas, controle.</p></div>
-          <div class="section"><h2>Desenvolvimento</h2><p>Flexibilidade, tolerância a erros.</p></div>
-        `
+      for (const [letra, valor] of Object.entries(respostas)) {
+        if (valor === "Mais") pontuacao[letra]++;
       }
-    };
 
-    document.getElementById("resultado").innerHTML = perfis[perfil]?.conteudo || "<p>Perfil não identificado.</p>";
+      const perfil = Object.entries(pontuacao).reduce((a, b) => a[1] >= b[1] ? a : b)[0];
+
+      localStorage.setItem("perfilDISC", perfil);
+      localStorage.setItem("nomeDISC", document.getElementById("nome").value);
+      localStorage.setItem("emailDISC", document.getElementById("email").value);
+      localStorage.setItem("whatsappDISC", document.getElementById("whatsapp").value);
+
+      // Redireciona para resultado.html
+      window.location.href = "resultado.html";
+    }
   </script>
 </body>
 </html>
