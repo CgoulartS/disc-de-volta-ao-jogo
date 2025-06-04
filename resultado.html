@@ -60,7 +60,17 @@
   </div>
 
   <script>
-    const perfil = localStorage.getItem("perfilDISC") || "D";
+const perfil = localStorage.getItem("perfilDISC");
+
+if (!perfil) {
+  document.getElementById("resultado").innerHTML = `
+    <h1>Você precisa fazer o teste primeiro.</h1>
+    <p><a href="index.html">Clique aqui para começar o teste DISC.</a></p>
+  `;
+} else {
+  document.getElementById("resultado").innerHTML = perfis[perfil]?.conteudo || "<p>Perfil não identificado.</p>";
+}
+
 
     const perfis = {
       D: {
