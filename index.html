@@ -4,17 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Teste DISC – De Volta pro Jogo</title>
-
   <!-- Fonte e resets básicos -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
   <style>
     /* Reset simples */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f3f6f9;
@@ -22,7 +16,6 @@
       line-height: 1.6;
       padding-bottom: 40px;
     }
-
     /* Cabeçalho com logo à direita */
     header {
       background-color: #0077b5;
@@ -40,7 +33,6 @@
       height: 40px;
       object-fit: contain;
     }
-
     /* Container geral */
     .container {
       max-width: 800px;
@@ -50,11 +42,8 @@
       padding: 30px 35px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.05);
     }
-
     /* Estilo do formulário */
-    .form-group {
-      margin-bottom: 20px;
-    }
+    .form-group { margin-bottom: 20px; }
     .form-group label.title {
       font-weight: 600;
       margin-bottom: 10px;
@@ -87,9 +76,7 @@
       font-size: 12px;
       color: #555;
     }
-    .likert-scale input[type="radio"] {
-      display: none;
-    }
+    .likert-scale input[type="radio"] { display: none; }
     .likert-scale span {
       display: inline-block;
       width: 30px;
@@ -104,10 +91,7 @@
       border-color: #0077b5;
       background-color: #0077b5;
     }
-    .likert-scale span:hover {
-      border-color: #0077b5;
-    }
-
+    .likert-scale span:hover { border-color: #0077b5; }
     /* Legenda abaixo da escala */
     .likert-legend {
       display: flex;
@@ -120,12 +104,8 @@
       font-size: 12px;
       color: #333;
     }
-
     /* Botão primário centralizado */
-    .button-container {
-      text-align: center;
-      margin-top: 20px;
-    }
+    .button-container { text-align: center; margin-top: 20px; }
     button {
       background-color: #0077b5;
       color: #ffffff;
@@ -137,23 +117,12 @@
       cursor: pointer;
       transition: background-color 0.2s;
     }
-    button:hover {
-      background-color: #005f91;
-    }
-
+    button:hover { background-color: #005f91; }
     /* Seção de resultado (inicialmente escondida) */
-    #resultado-container {
-      display: none;
-      margin-top: 40px;
-    }
-    #resultado-container.active {
-      display: block;
-    }
-
+    #resultado-container { display: none; margin-top: 40px; }
+    #resultado-container.active { display: block; }
     /* Blocos de perfil */
-    .perfil-section {
-      margin-bottom: 30px;
-    }
+    .perfil-section { margin-bottom: 30px; }
     .perfil-section h2 {
       color: #0077b5;
       margin-bottom: 16px;
@@ -161,36 +130,15 @@
       border-left: 4px solid #0077b5;
       padding-left: 10px;
     }
-    .perfil-section p {
-      margin-bottom: 12px;
-      font-size: 15px;
-      color: #333;
-    }
-    .perfil-section ul, .perfil-section ol {
-      margin-left: 20px;
-      margin-bottom: 12px;
-    }
-    .avatar {
-      font-size: 48px;
-      margin-bottom: 12px;
-    }
-
+    .perfil-section p { margin-bottom: 12px; font-size: 15px; color: #333; }
+    .perfil-section ul, .perfil-section ol { margin-left: 20px; margin-bottom: 12px; }
+    .avatar { font-size: 48px; margin-bottom: 12px; }
     /* Responsividade */
     @media (max-width: 600px) {
-      .likert-scale {
-        flex-wrap: wrap;
-      }
-      .likert-scale label {
-        flex: 0 0 20%;
-        margin-bottom: 8px;
-      }
-      .container {
-        margin: 20px 10px;
-        padding: 20px;
-      }
-      header h1 {
-        font-size: 18px;
-      }
+      .likert-scale { flex-wrap: wrap; }
+      .likert-scale label { flex: 0 0 20%; margin-bottom: 8px; }
+      .container { margin: 20px 10px; padding: 20px; }
+      header h1 { font-size: 18px; }
     }
   </style>
 </head>
@@ -199,15 +147,15 @@
   <!-- Cabeçalho com logo -->
   <header>
     <h1>Teste DISC – De Volta pro Jogo</h1>
-    <img src="https://media.licdn.com/dms/image/v2/D4D0BAQEfRmeRxUz9XA/company-logo_100_100/B4DZb9lZNkIAAc-/0/1748011161295/cgs_consultoria_e_trinamento_logo?e=1754524800&v=beta&t=oFxXi5QHdvnplK77gyruTpUWd8weHZnaCmKDxtI597s" 
+    <img src="https://media.licdn.com/dms/image/v2/D4D0BAQEfRmeRxUz9XA/company-logo_100_100/B4DZb9lZNkIAAc-/0/1748011161295/cgs_consultoria_e_trinamento_logo?e=1754524800&v=beta&t=oFxXi5QHdvnplK77gyruTpUWd8weHZnaCmKDxtI597s"
          alt="Logo CGS Consultoria">
   </header>
 
+  <!-- Formulário de preenchimento -->
   <div class="container" id="form-container">
-    <!-- Instruções gerais para o usuário -->
     <p style="margin-bottom:20px; font-size:15px; color:#333;">
-      <strong>Instruções:</strong> Para cada afirmação abaixo, escolha uma opção que melhor indique o quanto você concorda ou discorda.
-      <br>Marque de <em>"Discordo totalmente" (1)</em> até <em>"Concordo totalmente" (5)</em>.
+      <strong>Instruções:</strong> Para cada afirmação abaixo, escolha um valor de 1 a 5 que melhor indique seu grau de concordância:
+      <br>1 = Discordo totalmente, 2 = Discordo, 3 = Neutro, 4 = Concordo, 5 = Concordo totalmente.
     </p>
 
     <div class="form-group">
@@ -223,7 +171,7 @@
       <input type="text" id="whatsapp" placeholder="Ex: 51912345678" required>
     </div>
 
-    <!-- Início das declarações (16 no total) -->
+    <!-- Pergunta 1 -->
     <div class="form-group-question">
       <p class="question">1. Eu tomo decisões rapidamente quando enfrento um desafio.</p>
       <div class="likert-scale">
@@ -242,8 +190,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 2 -->
     <div class="form-group-question">
-      <p class="question">2. Eu me sinto confortável influenciando e motivando as pessoas ao meu redor.</p>
+      <p class="question">2. Gosto de interagir e inspirar as pessoas ao meu redor.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q2" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q2" value="2"><span title="Discordo"></span></label>
@@ -260,8 +209,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 3 -->
     <div class="form-group-question">
-      <p class="question">3. Normalmente sou visto como uma pessoa paciente e calma, mesmo em situações estressantes.</p>
+      <p class="question">3. Eu permaneço calmo(a) e paciente mesmo sob pressão.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q3" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q3" value="2"><span title="Discordo"></span></label>
@@ -278,8 +228,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 4 -->
     <div class="form-group-question">
-      <p class="question">4. Eu busco precisão e exatidão em tudo que faço.</p>
+      <p class="question">4. Eu presto atenção minuciosa aos detalhes e precisão no meu trabalho.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q4" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q4" value="2"><span title="Discordo"></span></label>
@@ -296,8 +247,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 5 -->
     <div class="form-group-question">
-      <p class="question">5. Eu me sinto energizado quando estou no centro de um projeto social ou de equipe.</p>
+      <p class="question">5. Eu gosto de motivar outros e trabalhar em equipe.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q5" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q5" value="2"><span title="Discordo"></span></label>
@@ -314,8 +266,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 6 -->
     <div class="form-group-question">
-      <p class="question">6. Procuro manter a harmonia e a estabilidade nos meus relacionamentos profissionais.</p>
+      <p class="question">6. Sou consistente e confiável ao seguir processos estabelecidos.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q6" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q6" value="2"><span title="Discordo"></span></label>
@@ -332,8 +285,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 7 -->
     <div class="form-group-question">
-      <p class="question">7. Eu prefiro seguir processos e padrões estabelecidos em vez de improvisar.</p>
+      <p class="question">7. Prefiro planejar meu trabalho detalhadamente antes de executar.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q7" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q7" value="2"><span title="Discordo"></span></label>
@@ -350,8 +304,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 8 -->
     <div class="form-group-question">
-      <p class="question">8. Gosto de liderar equipes em situações competitivas e de alta pressão.</p>
+      <p class="question">8. Eu busco resolver problemas de forma rápida e objetiva.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q8" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q8" value="2"><span title="Discordo"></span></label>
@@ -368,8 +323,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 9 -->
     <div class="form-group-question">
-      <p class="question">9. Eu gosto de trabalhar em projetos que envolvem interação social e networking.</p>
+      <p class="question">9. Gosto de falar em público e influenciar pessoas.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q9" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q9" value="2"><span title="Discordo"></span></label>
@@ -386,8 +342,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 10 -->
     <div class="form-group-question">
-      <p class="question">10. Sou conhecido por prestar atenção em cada detalhe de um relatório ou tarefa.</p>
+      <p class="question">10. Eu sigo normas e procedimentos à risca.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q10" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q10" value="2"><span title="Discordo"></span></label>
@@ -404,8 +361,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 11 -->
     <div class="form-group-question">
-      <p class="question">11. Eu ajudo colegas a se sentirem parte de um grupo e me preocupo com o bem-estar deles.</p>
+      <p class="question">11. Eu me adpto facilmente a mudanças de rotina e novas situações.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q11" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q11" value="2"><span title="Discordo"></span></label>
@@ -422,8 +380,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 12 -->
     <div class="form-group-question">
-      <p class="question">12. Eu me preocupo em garantir que o trabalho esteja dentro dos padrões de qualidade.</p>
+      <p class="question">12. Eu reviso constantemente meu trabalho em busca de precisão.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q12" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q12" value="2"><span title="Discordo"></span></label>
@@ -440,8 +399,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 13 -->
     <div class="form-group-question">
-      <p class="question">13. Eu prefiro trabalhar em ambientes de alta pressão e metas desafiadoras.</p>
+      <p class="question">13. Gosto de traçar metas altas e ultrapassar expectativas.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q13" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q13" value="2"><span title="Discordo"></span></label>
@@ -458,8 +418,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 14 -->
     <div class="form-group-question">
-      <p class="question">14. Eu busco constantemente reconhecimento pela minha contribuição e resultados.</p>
+      <p class="question">14. Eu prefiro trabalhar de forma animada e dinâmica em grupo.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q14" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q14" value="2"><span title="Discordo"></span></label>
@@ -476,8 +437,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 15 -->
     <div class="form-group-question">
-      <p class="question">15. Sinto-me confortável em questionar procedimentos que não façam sentido para mim.</p>
+      <p class="question">15. Eu sou detalhista e dou atenção a processos padronizados.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q15" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q15" value="2"><span title="Discordo"></span></label>
@@ -485,7 +447,7 @@
         <label><input type="radio" name="q15" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q15" value="5"><span title="Concordo totalmente"></span></label>
       </div>
-      <div class="likert-legend">
+      <div class="likert-legend">  
         <span>Discordo totalmente</span>
         <span>Discordo</span>
         <span>Neutro</span>
@@ -494,8 +456,9 @@
       </div>
     </div>
 
+    <!-- Pergunta 16 -->
     <div class="form-group-question">
-      <p class="question">16. Eu priorizo harmonia e cooperação em vez de competição no ambiente de trabalho.</p>
+      <p class="question">16. Eu me destaco em detalhes e precisão quando comparado(a) aos colegas.</p>
       <div class="likert-scale">
         <label><input type="radio" name="q16" value="1"><span title="Discordo totalmente"></span></label>
         <label><input type="radio" name="q16" value="2"><span title="Discordo"></span></label>
@@ -520,19 +483,21 @@
   <!-- Seção de Resultado (inicialmente oculta) -->
   <div id="resultado-container" class="container"></div>
 
-
   <script>
-    // Configuração das perguntas com o dimensionamento DISC
+    // URL do seu Apps Script Web App (deploy via doGet)
+    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbz7F5_05OjLpLkbhuAXjOKsZi-I5uDZOV3S-bJPCjs_MeIYqCKcJpGOKeor-WRNXisF/exec";
+
+    // Mapeamento das 16 perguntas para a dimensão D, I, S ou C
     const perguntas = [
-      { nome: "q1", letra: "D" },
-      { nome: "q2", letra: "I" },
-      { nome: "q3", letra: "S" },
-      { nome: "q4", letra: "C" },
-      { nome: "q5", letra: "I" },
-      { nome: "q6", letra: "S" },
-      { nome: "q7", letra: "C" },
-      { nome: "q8", letra: "D" },
-      { nome: "q9", letra: "I" },
+      { nome: "q1",  letra: "D" },
+      { nome: "q2",  letra: "I" },
+      { nome: "q3",  letra: "S" },
+      { nome: "q4",  letra: "C" },
+      { nome: "q5",  letra: "I" },
+      { nome: "q6",  letra: "S" },
+      { nome: "q7",  letra: "C" },
+      { nome: "q8",  letra: "D" },
+      { nome: "q9",  letra: "I" },
       { nome: "q10", letra: "C" },
       { nome: "q11", letra: "S" },
       { nome: "q12", letra: "C" },
@@ -542,68 +507,293 @@
       { nome: "q16", letra: "S" }
     ];
 
-    // Descrições completas para cada perfil
+    // Aqui você deve inserir o objeto completo com todas as descrições
+    // para cada perfil ("D", "I", "S" e "C"). Exemplo resumido:
     const perfisCompletos = {
       D: {
-        avatar: "⚡️",
+        avatar: "⚡",
         titulo: "Dominância",
-        descricaoCentral: "Pessoas do tipo D são focadas, determinadas e orientadas para resultados. Gostam de assumir o controle, tomar decisões rápidas e encarar desafios de frente.",
+        descricaoCentral: "Pessoas do tipo D são focadas, determinadas e orientadas para resultados...",
         caracteristicas: [
-          "Assertividade e coragem para liderar.",
-          "Visão estratégica em cenários desafiadores.",
-          "Tomada de decisão rápida.",
-          "Excelência em resolver problemas."
+          "Assertividade",
+          "Foco em metas",
+          "Decisão rápida",
+          "Autoconfiança"
         ],
         forcas: [
-          "Liderança natural em momentos de pressão.",
-          "Clareza de objetivos e metas.",
-          "Autoconfiança e persistência para alcançar resultados.",
-          "Alta tolerância ao risco."
+          "Liderança",
+          "Visão estratégica",
+          "Eficiência"
         ],
         pontosAtencao: [
-          "Podem ser impacientes e autoritários.",
-          "Dificuldade em delegar e ouvir opiniões divergentes.",
-          "Tendência a negligenciar detalhes emocionais dos outros.",
-          "Resistência a feedbacks suaves."
+          "Impaciência",
+          "Tendência a exigir resultados imediatos"
         ],
-        estiloComunicacao: "Direto, objetivo e orientado à ação. Prefere respostas claras e objetivas, sem rodeios.",
-        ambientesTrabalho: "Ambientes de alta pressão, metas desafiadoras, funções de liderança e autonomia.",
-        motivadores: "Desafios grandes, liberdade de ação e reconhecimento pelas conquistas.",
-        medos: "Perder o controle, parecer fraco ou ineficiente, falhar publicamente.",
+        estiloComunicacao: "Comunicação direta, objetiva e assertiva.",
+        ambientesTrabalho: "Ambientes competitivos, com prazos curtos e metas claras.",
+        motivadores: "Desafios, metas ousadas, autonomia.",
+        medos: "Sentir-se fraco ou perder o controle.",
         relacoes: {
-          equipe: "Assume o papel de líder, mas precisa praticar escuta ativa.",
-          familia: "Protetor(a), mas pode parecer distante se não equilibrar emoção.",
-          afetivo: "Precisa aprender a ceder e valorizar o diálogo."
+          equipe: "Ele assume o comando e orienta para a ação, mas deve cuidar para não parecer autoritário.",
+          familia: "Pode priorizar resultados e esquecer de demonstrar afeto, tente ouvir mais e ser paciente.",
+          afetivo: "Gosta de relacionamentos intensos, mas deve tentar exercitar a empatia e o tempo de qualidade."
         },
         dicas: [
-          "Pratique a escuta empática e delegue mais.",
-          "Desenvolva paciência para lidar com diferentes ritmos.",
-          "Busque feedbacks e reconheça o valor de outros pontos de vista.",
-          "Aprenda a expressar apoio emocional."
+          "Praticar escuta ativa",
+          "Exercitar a empatia",
+          "Delegar sem microgerenciar"
         ],
         crescimento: [
-          "Equilibrar ação com reflexão antes de decisões.",
-          "Desenvolver empatia e habilidades interpessoais.",
-          "Aprender a valorizar detalhes emocionais no dia a dia."
+          "Aprender a ouvir o outro antes de julgar",
+          "Cultivar paciência e empatia",
+          "Reconhecer a importância do trabalho em equipe"
         ]
       },
       I: {
-        avatar: "🌟",
+        avatar: "💬",
         titulo: "Influência",
-        descricaoCentral: "Pessoas do tipo I são extrovertidas, entusiasmadas e carismáticas. Gostam de se relacionar, inspiram confiança e buscam reconhecimento por sua energia contagiante.",
+        descricaoCentral: "Pessoas de perfil I são comunicativas, entusiasmadas e inspiradoras...",
         caracteristicas: [
-          "Alta capacidade de persuasão.",
-          "Entusiasmo e otimismo natural.",
-          "Habilidade de motivar equipes.",
-          "Facilidade em criar conexões interpessoais."
+          "Otimismo",
+          "Carisma",
+          "Networking"
         ],
         forcas: [
-          "Comunicação envolvente e contagiante.",
-          "Capacidade de inspirar e energizar outras pessoas.",
-          "Criatividade para projetos colaborativos.",
-          "Rede de contatos ampla e bem cultivada."
+          "Facilidade de comunicação",
+          "Energia contagiante",
+          "Criatividade"
         ],
         pontosAtencao: [
-          "Tendência à desorganização e dispersão.",
-          "Dificuldade em cumprir prazos sem suporte.",
-          "Evita confrontos diretos e feedbacks negativos.",
+          "Pode falar demais sem filtrar",
+          "Tendência a se dispersar"
+        ],
+        estiloComunicacao: "Comunicação calorosa, entusiasmada e persuasiva.",
+        ambientesTrabalho: "Ambientes dinâmicos, colaborativos e que valorizem redes de relacionamento.",
+        motivadores: "Aprovação social, reconhecimento público, colaboração.",
+        medos: "Ser ignorado ou ficar isolado socialmente.",
+        relacoes: {
+          equipe: "Trabalha bem em grupo, motiva colegas, mas cuidado para não desviar o foco das tarefas.",
+          familia: "É carinhoso e traz alegria, mas procure ouvir mais e dar atenção aos detalhes.",
+          afetivo: "Romântico e expansivo, mas valorize espaços de reflexão em casal."
+        },
+        dicas: [
+          "Criar rotinas para manter foco",
+          "Planejar antes de agir",
+          "Praticar a escuta ativa"
+        ],
+        crescimento: [
+          "Estabelecer prioridades",
+          "Desenvolver disciplina para concluir tarefas",
+          "Aprender a absorver críticas de forma equilibrada"
+        ]
+      },
+      S: {
+        avatar: "🛡️",
+        titulo: "Estabilidade",
+        descricaoCentral: "Pessoas de perfil S são calmas, pacientes e cooperativas...",
+        caracteristicas: [
+          "Paciência",
+          "Lealdade",
+          "Trabalho em equipe"
+        ],
+        forcas: [
+          "Apoio confiável",
+          "Escuta ativa",
+          "Constância"
+        ],
+        pontosAtencao: [
+          "Pode resistir a mudanças",
+          "Tendência a evitar conflitos"
+        ],
+        estiloComunicacao: "Comunicação tranquila, acolhedora e equilibrada.",
+        ambientesTrabalho: "Ambientes estáveis, com processos claros e pouco conflito diário.",
+        motivadores: "Harmonia, segurança, relacionamentos duradouros.",
+        medos: "Conflito, instabilidade, pressa excessiva.",
+        relacoes: {
+          equipe: "Excelente suporte aos colegas, mas deve aprender a tomar iniciativa e expor opiniões.",
+          familia: "Protetor e acolhedor, mas cuidado para não sacrificar suas próprias necessidades.",
+          afetivo: "Busca relacionamentos estáveis e seguros, mas pratique a expressão de seus próprios desejos."
+        },
+        dicas: [
+          "Abraçar mudanças gradualmente",
+          "Desenvolver assertividade",
+          "Expor opiniões de forma construtiva"
+        ],
+        crescimento: [
+          "Aprender a lidar com imprevistos",
+          "Tomar decisões mais rapidamente",
+          "Valorizar a própria voz em discussões"
+        ]
+      },
+      C: {
+        avatar: "🔍",
+        titulo: "Conformidade",
+        descricaoCentral: "Pessoas de perfil C são analíticas, precisas e orientadas a detalhes...",
+        caracteristicas: [
+          "Precisão",
+          "Meticulosidade",
+          "Raciocínio lógico"
+        ],
+        forcas: [
+          "Organização",
+          "Análise crítica",
+          "Qualidade de trabalho"
+        ],
+        pontosAtencao: [
+          "Perfeccionismo exagerado",
+          "Dificuldade em delegar"
+        ],
+        estiloComunicacao: "Comunicação cautelosa, detalhada e fundamentada em dados.",
+        ambientesTrabalho: "Ambientes organizados, padronizados e que valorizem processos bem definidos.",
+        motivadores: "Qualidade, precisão, controle de processos.",
+        medos: "Erros, falhas, falta de referências claras.",
+        relacoes: {
+          equipe: "Garante qualidade, mas deve exercitar flexibilidade e tolerância às divergências.",
+          familia: "Cuidadoso e protetor, mas procure demonstrar mais emoção espontânea.",
+          afetivo: "Valoriza relacionamentos baseados em confiança e resultados, mas mostre carinho com mais frequência."
+        },
+        dicas: [
+          "Aprender a delegar tarefas confidencialmente",
+          "Confiar no trabalho dos outros",
+          "Equilibrar perfeccionismo com produtividade"
+        ],
+        crescimento: [
+          "Aceitar que nem tudo precisa ser 100%",
+          "Desenvolver soluções mais ágeis",
+          "Aproveitar a criatividade em vez de só dados"
+        ]
+      }
+    };
+
+    // Função principal: coleta e envia para o Sheets, depois exibe resultado
+    function processarFormulario() {
+      // Captura campos de texto
+      const nome      = document.getElementById("nome").value.trim();
+      const email     = document.getElementById("email").value.trim();
+      const whatsapp  = document.getElementById("whatsapp").value.trim();
+
+      if (!nome || !email || !whatsapp) {
+        alert("Preencha nome, email e WhatsApp antes de prosseguir.");
+        return;
+      }
+
+      // Calcula pontuação por dimensão
+      const pontuacao = { D: 0, I: 0, S: 0, C: 0 };
+      for (const item of perguntas) {
+        const selecionado = document.querySelector(`input[name="${item.nome}"]:checked`);
+        if (!selecionado) {
+          alert("Por favor, responda todas as perguntas antes de continuar.");
+          return;
+        }
+        const valor = parseInt(selecionado.value, 10);
+        // Se for 4 ou 5, conta +1 ponto na dimensão correspondente
+        if (valor >= 4) {
+          pontuacao[item.letra]++;
+        }
+      }
+
+      // Descobre qual dimensão tem o maior score
+      let perfil = "D";
+      let max = pontuacao.D;
+      for (const letra of ["I","S","C"]) {
+        if (pontuacao[letra] > max) {
+          max = pontuacao[letra];
+          perfil = letra;
+        }
+      }
+
+      // Prepara query string para envio via GET
+      const params = new URLSearchParams({
+        nome:      nome,
+        email:     email,
+        whatsapp:  whatsapp,
+        perfil:    perfil,
+        D:         pontuacao.D,
+        I:         pontuacao.I,
+        S:         pontuacao.S,
+        C:         pontuacao.C
+      });
+
+      // Dispara a requisição (GET + no-cors) para o doGet do Apps Script
+      fetch(`${SHEETS_URL}?${params.toString()}`, {
+        method: 'GET',
+        mode: 'no-cors'
+      })
+        .then(() => console.log("Enviando a planilha:", params.toString()))
+        .catch(err => console.error("Erro ao enviar para o Sheets:", err));
+
+      // Exibe o resultado na própria página
+      exibirResultado(nome, perfil);
+    }
+
+    // Função para renderizar o perfil completo
+    function exibirResultado(nome, sigla) {
+      // Esconde o formulário
+      document.getElementById("form-container").style.display = 'none';
+      // Mostra área de resultado
+      const container = document.getElementById("resultado-container");
+      container.classList.add('active');
+
+      const perfilObj = perfisCompletos[sigla];
+      let html = `
+        <div class="perfil-section">
+          <div class="avatar">${perfilObj.avatar}</div>
+          <h2>Perfil ${sigla} – ${perfilObj.titulo}</h2>
+          <p><strong>Olá, ${nome}!</strong></p>
+          <p>${perfilObj.descricaoCentral}</p>
+        </div>
+        <div class="perfil-section">
+          <h2>Características Principais</h2>
+          <ul>
+            ${perfilObj.caracteristicas.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="perfil-section">
+          <h2>Forças Naturais</h2>
+          <ul>
+            ${perfilObj.forcas.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="perfil-section">
+          <h2>Pontos de Atenção</h2>
+          <ul>
+            ${perfilObj.pontosAtencao.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="perfil-section">
+          <h2>Estilo de Comunicação</h2>
+          <p>${perfilObj.estiloComunicacao}</p>
+        </div>
+        <div class="perfil-section">
+          <h2>Ambientes de Trabalho Ideais</h2>
+          <p>${perfilObj.ambientesTrabalho}</p>
+        </div>
+        <div class="perfil-section">
+          <h2>Motivadores e Medos</h2>
+          <p><strong>Motivadores:</strong> ${perfilObj.motivadores}</p>
+          <p><strong>Medos:</strong> ${perfilObj.medos}</p>
+        </div>
+        <div class="perfil-section">
+          <h2>Relações</h2>
+          <p><strong>Equipe:</strong> ${perfilObj.relacoes.equipe}</p>
+          <p><strong>Família:</strong> ${perfilObj.relacoes.familia}</p>
+          <p><strong>Afetivo:</strong> ${perfilObj.relacoes.afetivo}</p>
+        </div>
+        <div class="perfil-section">
+          <h2>Dicas de Desenvolvimento</h2>
+          <ul>
+            ${perfilObj.dicas.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="perfil-section">
+          <h2>Caminho de Crescimento</h2>
+          <ol>
+            ${perfilObj.crescimento.map(item => `<li>${item}</li>`).join('')}
+          </ol>
+        </div>
+      `;
+      container.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
