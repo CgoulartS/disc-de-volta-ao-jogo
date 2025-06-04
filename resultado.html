@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado DISC – De Volta pro Jogo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f6f9;
+      margin: 0;
+      padding: 20px;
+      color: #1f1f1f;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    .logo {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 60px;
+      height: auto;
+    }
+    h1 {
+      color: #0077b5;
+    }
+    .avatar {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+    .section {
+      margin-top: 24px;
+    }
+    .section h2 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 8px;
+      border-left: 4px solid #0077b5;
+      padding-left: 8px;
+    }
+    .section p {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="https://media.licdn.com/dms/image/v2/D4D0BAQEfRmeRxUz9XA/company-logo_100_100/B4DZb9lZNkIAAc-/0/1748011161295/cgs_consultoria_e_trinamento_logo?e=1754524800&v=beta&t=oFxXi5QHdvnplK77gyruTpUWd8weHZnaCmKDxtI597s" alt="Logo CGS Consultoria">
+    <div id="resultado">
+      <h1>Carregando seu perfil DISC...</h1>
+    </div>
+  </div>
+
+  <script>
+    const perfil = localStorage.getItem("perfilDISC") || "D";
+
+    const perfis = {
+      D: {
+        conteudo: `
+          <div class="avatar">⚡️</div>
+          <h1>Perfil D - Dominância</h1>
+          <div class="section"><h2>Identidade Comportamental</h2>
+          <p>Pessoas do tipo D são focadas, determinadas e orientadas para resultados...</p></div>
+          <div class="section"><h2>Características principais</h2>
+          <p>Assertividade, foco em metas, decisão rápida, autoconfiança.</p></div>
+          <div class="section"><h2>Forças naturais</h2><p>Liderança, visão estratégica, eficiência.</p></div>
+          <div class="section"><h2>Desenvolvimento</h2><p>Trabalhar escuta, empatia e delegação.</p></div>
+        `
+      },
+      I: {
+        conteudo: `
+          <div class="avatar">🌟</div>
+          <h1>Perfil I - Influência</h1>
+          <div class="section"><h2>Identidade Comportamental</h2>
+          <p>Comunicativo, empático, cativante...</p></div>
+          <div class="section"><h2>Características principais</h2>
+          <p>Carisma, conexão, otimismo.</p></div>
+          <div class="section"><h2>Forças naturais</h2><p>Inspira, motiva, envolve.</p></div>
+          <div class="section"><h2>Desenvolvimento</h2><p>Foco, escuta e gestão de tempo.</p></div>
+        `
+      },
+      S: {
+        conteudo: `
+          <div class="avatar">🌿</div>
+          <h1>Perfil S - Estabilidade</h1>
+          <div class="section"><h2>Identidade Comportamental</h2>
+          <p>Calmo, paciente, confiável...</p></div>
+          <div class="section"><h2>Características principais</h2>
+          <p>Lealdade, persistência, apoio.</p></div>
+          <div class="section"><h2>Forças naturais</h2><p>Harmonia, escuta, constância.</p></div>
+          <div class="section"><h2>Desenvolvimento</h2><p>Posicionamento, autonomia.</p></div>
+        `
+      },
+      C: {
+        conteudo: `
+          <div class="avatar">⚖️</div>
+          <h1>Perfil C - Conformidade</h1>
+          <div class="section"><h2>Identidade Comportamental</h2>
+          <p>Analítico, preciso, disciplinado...</p></div>
+          <div class="section"><h2>Características principais</h2>
+          <p>Excelência, organização, lógica.</p></div>
+          <div class="section"><h2>Forças naturais</h2><p>Detalhes, métricas, controle.</p></div>
+          <div class="section"><h2>Desenvolvimento</h2><p>Flexibilidade, tolerância a erros.</p></div>
+        `
+      }
+    };
+
+    document.getElementById("resultado").innerHTML = perfis[perfil]?.conteudo || "<p>Perfil não identificado.</p>";
+  </script>
+</body>
+</html>
