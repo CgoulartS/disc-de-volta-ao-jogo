@@ -79,7 +79,7 @@
       display: flex;
       justify-content: space-between;
       margin-top: 8px;
-      margin-bottom: 18px;
+      margin-bottom: 4px;
     }
     .likert-scale label {
       flex: 1;
@@ -108,7 +108,24 @@
       border-color: #0077b5;
     }
 
-    /* Botão primário */
+    /* Legenda abaixo da escala */
+    .likert-legend {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .likert-legend span {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      color: #333;
+    }
+
+    /* Botão primário centralizado */
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
     button {
       background-color: #0077b5;
       color: #ffffff;
@@ -118,7 +135,6 @@
       font-weight: 600;
       border-radius: 6px;
       cursor: pointer;
-      margin-top: 10px;
       transition: background-color 0.2s;
     }
     button:hover {
@@ -149,6 +165,10 @@
       margin-bottom: 12px;
       font-size: 15px;
       color: #333;
+    }
+    .perfil-section ul, .perfil-section ol {
+      margin-left: 20px;
+      margin-bottom: 12px;
     }
     .avatar {
       font-size: 48px;
@@ -184,7 +204,12 @@
   </header>
 
   <div class="container" id="form-container">
-    <!-- Formulário do teste DISC -->
+    <!-- Instruções gerais para o usuário -->
+    <p style="margin-bottom:20px; font-size:15px; color:#333;">
+      <strong>Instruções:</strong> Para cada afirmação abaixo, escolha uma opção que melhor indique o quanto você concorda ou discorda. 
+      <br>Selecione de "Discordo totalmente" (1) até "Concordo totalmente" (5).
+    </p>
+
     <div class="form-group">
       <label class="title" for="nome">Nome completo</label>
       <input type="text" id="nome" placeholder="Seu nome completo" required>
@@ -203,26 +228,18 @@
     <div class="form-group-question">
       <p class="question">1. Eu tomo decisões rapidamente quando enfrento um desafio.</p>
       <div class="likert-scale">
-        <label>
-          <input type="radio" name="q1" value="1">
-          <span title="Discordo totalmente"></span>
-        </label>
-        <label>
-          <input type="radio" name="q1" value="2">
-          <span title="Discordo"></span>
-        </label>
-        <label>
-          <input type="radio" name="q1" value="3">
-          <span title="Neutro"></span>
-        </label>
-        <label>
-          <input type="radio" name="q1" value="4">
-          <span title="Concordo"></span>
-        </label>
-        <label>
-          <input type="radio" name="q1" value="5">
-          <span title="Concordo totalmente"></span>
-        </label>
+        <label><input type="radio" name="q1" value="1"><span title="Discordo totalmente"></span></label>
+        <label><input type="radio" name="q1" value="2"><span title="Discordo"></span></label>
+        <label><input type="radio" name="q1" value="3"><span title="Neutro"></span></label>
+        <label><input type="radio" name="q1" value="4"><span title="Concordo"></span></label>
+        <label><input type="radio" name="q1" value="5"><span title="Concordo totalmente"></span></label>
+      </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
       </div>
     </div>
 
@@ -235,6 +252,13 @@
         <label><input type="radio" name="q2" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q2" value="5"><span title="Concordo totalmente"></span></label>
       </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
+      </div>
     </div>
 
     <div class="form-group-question">
@@ -245,6 +269,13 @@
         <label><input type="radio" name="q3" value="3"><span title="Neutro"></span></label>
         <label><input type="radio" name="q3" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q3" value="5"><span title="Concordo totalmente"></span></label>
+      </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
       </div>
     </div>
 
@@ -257,6 +288,13 @@
         <label><input type="radio" name="q4" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q4" value="5"><span title="Concordo totalmente"></span></label>
       </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
+      </div>
     </div>
 
     <div class="form-group-question">
@@ -267,6 +305,13 @@
         <label><input type="radio" name="q5" value="3"><span title="Neutro"></span></label>
         <label><input type="radio" name="q5" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q5" value="5"><span title="Concordo totalmente"></span></label>
+      </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
       </div>
     </div>
 
@@ -279,6 +324,13 @@
         <label><input type="radio" name="q6" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q6" value="5"><span title="Concordo totalmente"></span></label>
       </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
+      </div>
     </div>
 
     <div class="form-group-question">
@@ -289,6 +341,13 @@
         <label><input type="radio" name="q7" value="3"><span title="Neutro"></span></label>
         <label><input type="radio" name="q7" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q7" value="5"><span title="Concordo totalmente"></span></label>
+      </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
       </div>
     </div>
 
@@ -301,6 +360,13 @@
         <label><input type="radio" name="q8" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q8" value="5"><span title="Concordo totalmente"></span></label>
       </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
+      </div>
     </div>
 
     <div class="form-group-question">
@@ -311,6 +377,13 @@
         <label><input type="radio" name="q9" value="3"><span title="Neutro"></span></label>
         <label><input type="radio" name="q9" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q9" value="5"><span title="Concordo totalmente"></span></label>
+      </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
       </div>
     </div>
 
@@ -323,6 +396,13 @@
         <label><input type="radio" name="q10" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q10" value="5"><span title="Concordo totalmente"></span></label>
       </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
+      </div>
     </div>
 
     <div class="form-group-question">
@@ -333,6 +413,13 @@
         <label><input type="radio" name="q11" value="3"><span title="Neutro"></span></label>
         <label><input type="radio" name="q11" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q11" value="5"><span title="Concordo totalmente"></span></label>
+      </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
       </div>
     </div>
 
@@ -345,6 +432,13 @@
         <label><input type="radio" name="q12" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q12" value="5"><span title="Concordo totalmente"></span></label>
       </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
+      </div>
     </div>
 
     <div class="form-group-question">
@@ -355,6 +449,13 @@
         <label><input type="radio" name="q13" value="3"><span title="Neutro"></span></label>
         <label><input type="radio" name="q13" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q13" value="5"><span title="Concordo totalmente"></span></label>
+      </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
       </div>
     </div>
 
@@ -367,6 +468,13 @@
         <label><input type="radio" name="q14" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q14" value="5"><span title="Concordo totalmente"></span></label>
       </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
+      </div>
     </div>
 
     <div class="form-group-question">
@@ -377,6 +485,13 @@
         <label><input type="radio" name="q15" value="3"><span title="Neutro"></span></label>
         <label><input type="radio" name="q15" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q15" value="5"><span title="Concordo totalmente"></span></label>
+      </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
       </div>
     </div>
 
@@ -389,20 +504,26 @@
         <label><input type="radio" name="q16" value="4"><span title="Concordo"></span></label>
         <label><input type="radio" name="q16" value="5"><span title="Concordo totalmente"></span></label>
       </div>
+      <div class="likert-legend">
+        <span>Discordo totalmente</span>
+        <span>Discordo</span>
+        <span>Neutro</span>
+        <span>Concordo</span>
+        <span>Concordo totalmente</span>
+      </div>
     </div>
 
-    <button onclick="processarFormulario()">Ver Resultado</button>
+    <div class="button-container">
+      <button onclick="processarFormulario()">Ver Resultado</button>
+    </div>
   </div>
 
   <!-- Seção de Resultado (inicialmente oculta) -->
-  <div id="resultado-container" class="container">
-    <!-- Substituído dinamicamente por JavaScript -->
-  </div>
+  <div id="resultado-container" class="container"></div>
 
 
   <script>
     // Configuração das perguntas com o dimensionamento DISC
-    // Cada questão mapeia para uma letra ('D','I','S','C').
     const perguntas = [
       { nome: "q1", letra: "D" },
       { nome: "q2", letra: "I" },
@@ -639,7 +760,6 @@
         email: email,
         whatsapp: whatsapp,
         perfil: perfil,
-        // Opcional: também podemos enviar o score de cada dimensão
         d_score: pontuacao.D,
         i_score: pontuacao.I,
         s_score: pontuacao.S,
@@ -647,7 +767,6 @@
       });
       fetch(`${SHEETS_URL}?${params.toString()}`)
         .then(res => {
-          // opcional: checar status ou exibir confirmação
           console.log("Dados enviados ao Sheets com sucesso.", res);
         })
         .catch(err => console.error("Erro enviando ao Sheets:", err));
@@ -726,8 +845,6 @@
       `;
 
       resultadoDiv.innerHTML = html;
-
-      // Rolagem suave até o resultado
       resultadoDiv.scrollIntoView({ behavior: "smooth" });
     }
   </script>
