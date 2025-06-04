@@ -87,21 +87,19 @@
 
   <script>
     const blocos = [
-      ["Resolvo rápido os problemas", "Gosto de motivar as pessoas", "Sou paciente e tranquilo(a)", "Cuido dos detalhes com atenção"],
-      ["Tomo decisões com facilidade", "Me comunico com facilidade", "Procuro apoiar os outros", "Sigo regras com precisão"],
-      ["Sou competitivo(a)", "Sou otimista", "Evito conflitos", "Gosto de procedimentos"],
-      ["Sou focado(a) em metas", "Faço amizades com facilidade", "Sou leal", "Sou analítico(a)"],
-      ["Gosto de desafiar sistemas", "Gosto de conversar", "Sou emocionalmente estável", "Prezo pela organização"],
-      ["Não temo riscos", "Me entroso fácil", "Faço o que me pedem", "Avalio os fatos"],
-      ["Tomo iniciativa", "Gosto de ser notado(a)", "Sou calmo(a)", "Sou detalhista"],
-      ["Lidero quando preciso", "Falo com entusiasmo", "Gosto de rotina", "Sigo processos"],
-      ["Enfrento desafios", "Contagio com minha energia", "Valorizo a harmonia", "Prezo por exatidão"],
-      ["Tenho senso de urgência", "Falo bastante", "Acolho as pessoas", "Sigo normas"],
-      ["Gosto de estar no controle", "Gosto de influenciar", "Me adapto", "Analiso antes de opinar"],
-      ["Sou determinado(a)", "Gosto de expor ideias", "Sigo uma rotina", "Reviso com calma"]
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Resolvo rápido os problemas", "Gosto de motivar as pessoas", "Sou paciente e tranquilo(a)", "Cuido dos detalhes com atenção"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Tomo decisões com facilidade", "Me comunico com facilidade", "Procuro apoiar os outros", "Sigo regras com precisão"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Sou competitivo(a)", "Sou otimista", "Evito conflitos", "Gosto de procedimentos"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Sou focado(a) em metas", "Faço amizades com facilidade", "Sou leal", "Sou analítico(a)"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Gosto de desafiar sistemas", "Gosto de conversar", "Sou emocionalmente estável", "Prezo pela organização"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Não temo riscos", "Me entroso fácil", "Faço o que me pedem", "Avalio os fatos"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Tomo iniciativa", "Gosto de ser notado(a)", "Sou calmo(a)", "Sou detalhista"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Lidero quando preciso", "Falo com entusiasmo", "Gosto de rotina", "Sigo processos"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Enfrento desafios", "Contagio com minha energia", "Valorizo a harmonia", "Prezo por exatidão"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Tenho senso de urgência", "Falo bastante", "Acolho as pessoas", "Sigo normas"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Gosto de estar no controle", "Gosto de influenciar", "Me adapto", "Analiso antes de opinar"] },
+      { letras: ['D', 'I', 'S', 'C'], frases: ["Sou determinado(a)", "Gosto de expor ideias", "Sigo uma rotina", "Reviso com calma"] }
     ];
-
-    const letras = ["D", "I", "S", "C"];
 
     function montarFormulario() {
       const form = document.getElementById("discForm");
@@ -112,20 +110,20 @@
         title.innerHTML = `<strong>Bloco ${i + 1}</strong>`;
         div.appendChild(title);
 
-        bloco.forEach((frase, j) => {
+        bloco.frases.forEach((frase, j) => {
           const p = document.createElement("p");
-          p.innerText = `${letras[j]}: ${frase}`;
+          p.innerText = `${bloco.letras[j]}: ${frase}`;
           div.appendChild(p);
         });
 
         const maisSelect = document.createElement("select");
         maisSelect.name = `bloco${i}_mais`;
-        maisSelect.innerHTML = `<option value="">Mais...</option>` + letras.map(l => `<option value="${l}">${l}</option>`).join('');
+        maisSelect.innerHTML = `<option value="">Mais...</option>` + bloco.letras.map(l => `<option value="${l}">${l}</option>`).join('');
         div.appendChild(maisSelect);
 
         const menosSelect = document.createElement("select");
         menosSelect.name = `bloco${i}_menos`;
-        menosSelect.innerHTML = `<option value="">Menos...</option>` + letras.map(l => `<option value="${l}">${l}</option>`).join('');
+        menosSelect.innerHTML = `<option value="">Menos...</option>` + bloco.letras.map(l => `<option value="${l}">${l}</option>`).join('');
         div.appendChild(menosSelect);
 
         form.appendChild(div);
@@ -165,27 +163,21 @@
       const perfil = Object.keys(contagem).reduce((a, b) => contagem[a] > contagem[b] ? a : b);
 
       const analises = {
-        D: `**Dominância**\n\nPessoas com perfil D são líderes natos, orientadas a resultados e decisões rápidas.\n\n• Pontos fortes: proatividade, coragem, liderança, foco em metas.\n• Pontos de melhoria: impaciência, tendência ao controle, comunicação direta demais.\n• Estilo de comunicação: direto, objetivo, impessoal.\n• Ambientes ideais: desafiadores, com autonomia e metas claras.\n• Dica: desenvolver escuta ativa e empatia estratégica pode equilibrar sua força de decisão.`,
-
-        I: `**Influência**\n\nPessoas com perfil I se destacam pela sociabilidade, entusiasmo e comunicação.\n\n• Pontos fortes: empatia, carisma, persuasão, otimismo.\n• Pontos de melhoria: dispersão, dificuldade com detalhes e prazos.\n• Estilo de comunicação: amigável, informal, expressivo.\n• Ambientes ideais: colaborativos, criativos, livres.\n• Dica: estruturar a comunicação e o planejamento pode aumentar sua confiabilidade.`,
-
-        S: `**Estabilidade**\n\nPessoas com perfil S são constantes, acolhedoras e buscam harmonia.\n\n• Pontos fortes: lealdade, escuta, paciência, confiabilidade.\n• Pontos de melhoria: resistência à mudança, passividade diante de conflitos.\n• Estilo de comunicação: gentil, afetuoso, calmo.\n• Ambientes ideais: seguros, com rotina clara e apoio mútuo.\n• Dica: desenvolver posicionamento assertivo fortalece sua presença.`,
-
-        C: `**Conformidade**\n\nPessoas com perfil C prezam pela excelência, precisão e lógica.\n\n• Pontos fortes: análise, organização, consistência, senso crítico.\n• Pontos de melhoria: perfeccionismo, lentidão na tomada de decisões, rigidez.\n• Estilo de comunicação: técnico, estruturado, reservado.\n• Ambientes ideais: bem planejados, com regras claras e padrão de qualidade.\n• Dica: trabalhar flexibilidade e tolerância ao erro pode ampliar sua influência.`
+        D: "Dominância\n\nFoco: resultados, ação e metas.\n• Fortes: liderança, coragem, foco.\n• Melhorias: escuta, paciência.\n• Comunicação: objetiva.\n• Ambientes ideais: desafiadores e autônomos.",
+        I: "Influência\n\nFoco: pessoas, inspiração, criatividade.\n• Fortes: empatia, entusiasmo.\n• Melhorias: foco, organização.\n• Comunicação: expressiva.\n• Ambientes ideais: colaborativos e livres.",
+        S: "Estabilidade\n\nFoco: rotina, previsibilidade e apoio.\n• Fortes: escuta, lealdade.\n• Melhorias: assertividade.\n• Comunicação: gentil.\n• Ambientes ideais: acolhedores e estáveis.",
+        C: "Conformidade\n\nFoco: precisão, padrão, lógica.\n• Fortes: análise, organização.\n• Melhorias: flexibilidade.\n• Comunicação: técnica.\n• Ambientes ideais: bem estruturados."
       };
 
       const result = `Nome: ${nome}\nEmail: ${email}\nWhatsApp: ${whatsapp}\n\nPerfil predominante: ${perfil}\n\n${analises[perfil]}`;
       document.getElementById("resultado").innerText = result;
       document.getElementById("resultado").style.display = "block";
 
-      // Envio para Google Sheets
       fetch("https://script.google.com/macros/s/AKfycbz7F5_05OjLpLkbhuAXjOKsZi-I5uDZOV3S-bJPCjs_MeIYqCKcJpGOKeor-WRNXisF/exec", {
         method: "POST",
         body: JSON.stringify({ nome, email, whatsapp, perfil, ...contagem }),
         headers: { "Content-Type": "application/json" }
-      })
-      .then(res => console.log("Enviado ao Sheets"))
-      .catch(err => console.error("Erro no envio", err));
+      }).then(res => console.log("Dados enviados com sucesso.")).catch(err => console.error("Erro no envio", err));
     }
 
     montarFormulario();
