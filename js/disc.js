@@ -1,5 +1,5 @@
   // URL do seu Apps Script Web App (deploy via doGet)
-    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbyA0y3DFmyYzu7jzPIkT6oKVKBaR4vMagXLrTUrP2i6TnXCaJHO-9rjrkv2TOvSFHF6/exec";
+    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzRiJnSaCFRfIfziyRupkJUB5bHP_XfxGF78BG9iymWVUjQ8YIvMNoVcXd8vpB0G3IB/exec";
 
     // Mapeamento das 16 perguntas para a dimensão D, I, S ou C
     const perguntas = [
