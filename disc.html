@@ -12,23 +12,35 @@
  </head>
 <body>
 
-  <!-- Cabeçalho com logo -->
-   <header>
-    <a href="index.html" class="logo">
-      <img src="images/logo.png" alt="Logo CGS Consultoria">
-      <h1>Teste DISC – De Volta pro Jogo</h1>
-    </a>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <nav>
-      <ul id="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="servicos.html">Serviços</a></li>
-        <li><a href="disc.html" class="btn-disc">Faça o Teste DISC</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+<nav class="topbar">
+  <!-- Nome da marca / logo (à esquerda) -->
+  <a href="index.html" class="logo">CGS Consultoria</a>
+
+  <!-- Ícone hamburger (aparece somente em telas < 768px) -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+
+  <!-- Lista de links do menu -->
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="disc.html" class="active">Faça o teste DISC</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+</nav>
+
+<script>
+  // Função para exibir/esconder o menu em telas pequenas
+  function toggleMenu() {
+    const menu = document.querySelector('.topbar .menu');
+    menu.classList.toggle('open');
+  }
+</script>
+
 
   <!-- Formulário de preenchimento -->
   <div class="container" id="form-container">
@@ -363,6 +375,9 @@
   <div id="resultado-container" class="container"></div>
 
   <script src="js/disc.js"></script>
+<footer class="footer">
+  &copy; 2025 CGS Consultoria & Mentoria. Todos os direitos reservados.
+</footer>
 
 </body>
 </html>

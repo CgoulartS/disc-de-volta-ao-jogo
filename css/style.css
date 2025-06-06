@@ -1,134 +1,188 @@
-     /* Reset simples */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f3f6f9;
-      color: #1f1f1f;
-      line-height: 1.6;
-      padding-bottom: 40px;
-    }
-    /* Cabeçalho com logo à direita */
-    header {
-      background-color: #0077b5;
-      color: #ffffff;
-      padding: 20px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header h1 {
-      font-size: 22px;
-      font-weight: 600;
-    }
-    header img {
-      height: 40px;
-      object-fit: contain;
-    }
-    /* Container geral */
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 30px 35px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-    }
-    /* Estilo do formulário */
-    .form-group { margin-bottom: 20px; }
-    .form-group label.title {
-      font-weight: 600;
-      margin-bottom: 10px;
-      display: block;
-      color: #0077b5;
-    }
-    .form-group input[type="text"],
-    .form-group input[type="email"] {
-      width: 100%;
-      padding: 10px 12px;
-      font-size: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    .form-group .question {
-      margin-bottom: 12px;
-      font-size: 16px;
-      font-weight: 500;
-      color: #333;
-    }
-    .likert-scale {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 8px;
-      margin-bottom: 4px;
-    }
-    .likert-scale label {
-      flex: 1;
-      text-align: center;
-      font-size: 12px;
-      color: #555;
-    }
-    .likert-scale input[type="radio"] { display: none; }
-    .likert-scale span {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      margin: 0 auto;
-      border: 2px solid #ccc;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .likert-scale input[type="radio"]:checked + span {
-      border-color: #0077b5;
-      background-color: #0077b5;
-    }
-    .likert-scale span:hover { border-color: #0077b5; }
-    /* Legenda abaixo da escala */
-    .likert-legend {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 18px;
-    }
-    .likert-legend span {
-      flex: 1;
-      text-align: center;
-      font-size: 12px;
-      color: #333;
-    }
-    /* Botão primário centralizado */
-    .button-container { text-align: center; margin-top: 20px; }
-    button {
-      background-color: #0077b5;
-      color: #ffffff;
-      border: none;
-      padding: 14px 28px;
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-    button:hover { background-color: #005f91; }
-    /* Seção de resultado (inicialmente escondida) */
-    #resultado-container { display: none; margin-top: 40px; }
-    #resultado-container.active { display: block; }
-    /* Blocos de perfil */
-    .perfil-section { margin-bottom: 30px; }
-    .perfil-section h2 {
-      color: #0077b5;
-      margin-bottom: 16px;
-      font-size: 20px;
-      border-left: 4px solid #0077b5;
-      padding-left: 10px;
-    }
-    .perfil-section p { margin-bottom: 12px; font-size: 15px; color: #333; }
-    .perfil-section ul, .perfil-section ol { margin-left: 20px; margin-bottom: 12px; }
-    .avatar { font-size: 48px; margin-bottom: 12px; }
-    /* Responsividade */
-    @media (max-width: 600px) {
-      .likert-scale { flex-wrap: wrap; }
-      .likert-scale label { flex: 0 0 20%; margin-bottom: 8px; }
-      .container { margin: 20px 10px; padding: 20px; }
-      header h1 { font-size: 18px; }
-    }
-  
+/* ==============================
+   styles.css (paleta “tech‐acolhedora”)
+   ============================== */
+
+/* 1) RESET / FONTES */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f7fa;  /* Cinza‐claro de fundo */
+  color: #1f2a44;              /* Azul‐navy escuro para textos */
+  line-height: 1.6;
+}
+
+/* 2) CABEÇALHO / MENU (TOPO fixo, responsivo) */
+.topbar {
+  background-color: #1f2a44;       /* Azul‐navy escuro */
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar .logo {
+  color: #2dc4b1;                  /* Turquesa para o nome da marca */
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.topbar .menu {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+.topbar .menu a {
+  color: #f5f7fa;                  /* Quase branco para links */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+.topbar .menu a:hover,
+.topbar .menu a.active {
+  color: #2dc4b1;                  /* Turquesa ao passar o mouse e ao link ativo */
+}
+
+/* ÍCONE “HAMBURGER” para telas pequenas */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+.hamburger .bar {
+  width: 24px;
+  height: 3px;
+  background-color: #f5f7fa;
+  margin: 4px 0;
+  transition: background-color 0.2s ease;
+}
+.hamburger:hover .bar {
+  background-color: #2dc4b1;
+}
+
+/* RESPONSIVIDADE (telas até 768px) */
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hamburger {
+    display: block;
+  }
+  .topbar .menu {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 12px;
+    display: none; /* inicial: escondido */
+  }
+  .topbar .menu.open {
+    display: flex; /* quando receber a classe “open” vira visível */
+  }
+  .topbar .menu li {
+    margin: 8px 0;
+  }
+}
+
+/* 3) CONTAINER CENTRAL (área branca com sombra) */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 4) TIPOGRAFIA E TÍTULOS */
+h1, h2, h3 {
+  color: #1f2a44;
+  margin-bottom: 16px;
+}
+p, li, label, small {
+  color: #1f2a44;
+}
+ul {
+  list-style: disc inside;
+  margin-left: 20px;
+}
+
+/* 5) BOTÕES */
+.btn {
+  display: inline-block;
+  background-color: #2dc4b1;        /* Turquesa */
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 24px;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.btn:hover {
+  background-color: #25a693;        /* Levemente mais escuro */
+}
+
+/* UTILITÁRIO para centralizar botões dentro do container */
+.btn-center {
+  text-align: center;
+  margin-top: 24px;
+}
+
+/* 6) FORMULÁRIOS E INPUTS */
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #1f2a44;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #1f2a44;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2dc4b1;
+  box-shadow: 0 0 0 2px rgba(45, 196, 177, 0.2);
+}
+
+/* 7) INSTRUÇÕES DO TESTE DISC (caixinha azul‐claro) */
+.instructions {
+  background: #e8f7f5;              /* Turquesa muito claro */
+  border-left: 4px solid #2dc4b1;   /* Borda turquesa */
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  color: #1f2a44;
+  font-size: 0.95rem;
+}
+
+/* 8) RODAPÉ */
+.footer {
+  text-align: center;
+  padding: 24px 0;
+  color: #1f2a44;
+  font-size: 0.9rem;
+  background-color: #f5f7fa;
+}
+
