@@ -13,10 +13,21 @@
 <body>
 
   <!-- Cabeçalho com logo -->
-  <header>
-    <h1>Teste DISC – De Volta pro Jogo</h1>
-    <img src="https://media.licdn.com/dms/image/v2/D4D0BAQEfRmeRxUz9XA/company-logo_100_100/B4DZb9lZNkIAAc-/0/1748011161295/cgs_consultoria_e_trinamento_logo?e=1754524800&v=beta&t=oFxXi5QHdvnplK77gyruTpUWd8weHZnaCmKDxtI597s"
-         alt="Logo CGS Consultoria">
+   <header>
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Logo CGS Consultoria">
+      <h1>Teste DISC – De Volta pro Jogo</h1>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav>
+      <ul id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="disc.html" class="btn-disc">Faça o Teste DISC</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- Formulário de preenchimento -->
