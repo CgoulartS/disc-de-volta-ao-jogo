@@ -3,40 +3,116 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contato – CGS Consultoria</title>
+  <title>Contato – CGS Consultoria & Mentoria</title>
+  <!-- Link para seu CSS principal -->
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== Ajustes específicos para esta página ===== */
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: #2c3e50;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label.title {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #2c3e50;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 24px;
+    }
+    .button-container button {
+      background-color: #0077b5;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .button-container button:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+    }
+    .button-container button:hover:not(:disabled) {
+      background-color: #005582;
+    }
+    /* Mensagem de feedback (sucesso/erro) */
+    #contato-feedback {
+      margin-top: 16px;
+      font-size: 0.95rem;
+      display: none;
+    }
+    #contato-feedback.success {
+      color: #16a085;
+    }
+    #contato-feedback.error {
+      color: #c0392b;
+    }
+  </style>
 </head>
 <body>
-<nav class="topbar">
-  <!-- Nome da marca / logo (à esquerda) -->
-  <a href="index.html" class="logo">CGS Consultoria</a>
+  <!-- ===== CABEÇALHO (menu) ===== -->
+  <nav class="topbar">
+    <!-- Nome da marca / logo (à esquerda) -->
+    <a href="index.html" class="logo">CGS Consultoria</a>
 
-  <!-- Ícone hamburger (aparece somente em telas < 768px) -->
-  <div class="hamburger" onclick="toggleMenu()">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </div>
+    <!-- Ícone hamburger (aparece somente em telas < 768px) -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
 
-  <!-- Lista de links do menu -->
-  <ul class="menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="sobre.html">Sobre</a></li>
-    <li><a href="servicos.html">Serviços</a></li>
-    <li><a href="disc.html">Faça o Teste DISC</a></li>
-    <li><a href="contato.html" class="active">Contato</a></li>
-  </ul>
-</nav>
+    <!-- Lista de links do menu -->
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="disc.html">Faça o Teste DISC</a></li>
+      <li><a href="contato.html" class="active">Contato</a></li>
+    </ul>
+  </nav>
 
-<script>
-  // Função para exibir/esconder o menu em telas pequenas
-  function toggleMenu() {
-    const menu = document.querySelector('.topbar .menu');
-    menu.classList.toggle('open');
-  }
-</script>
+  <script>
+    // Função para exibir/esconder o menu em telas pequenas
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle('open');
+    }
+  </script>
+  <!-- ===== FIM DO CABEÇALHO ===== -->
 
-
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <div class="container">
     <h2 class="section-title">Fale Conosco</h2>
     <p>
@@ -44,21 +120,25 @@
       <strong>evolução de carreira</strong>, <strong>formação de líderes</strong> ou <strong>consultoria em projetos/empresas</strong>, 
       preencha o formulário abaixo. Entraremos em contato para agendar uma conversa inicial sem compromisso.
     </p>
-    <form id="form-contato">
+
+    <form id="form-contato" novalidate>
       <div class="form-group">
-        <label class="title" for="nomeContato">Nome completo</label>
+        <label class="title" for="nomeContato">Nome completo*</label>
         <input type="text" id="nomeContato" name="nome" placeholder="Seu nome completo" required />
       </div>
+
       <div class="form-group">
-        <label class="title" for="emailContato">Email</label>
+        <label class="title" for="emailContato">Email*</label>
         <input type="email" id="emailContato" name="email" placeholder="email@exemplo.com" required />
       </div>
+
       <div class="form-group">
-        <label class="title" for="whatsappContato">WhatsApp (com DDD)</label>
+        <label class="title" for="whatsappContato">WhatsApp (com DDD)*</label>
         <input type="text" id="whatsappContato" name="whatsapp" placeholder="Ex: 51912345678" required />
       </div>
+
       <div class="form-group">
-        <label class="title" for="tipoServico">Tipo de Serviço</label>
+        <label class="title" for="tipoServico">Tipo de Serviço*</label>
         <select id="tipoServico" name="servico" required>
           <option value="">Escolha...</option>
           <option value="mentoria-1x1">Mentoria 1:1</option>
@@ -69,53 +149,100 @@
           <option value="consultoria-projetos">Consultoria em Projetos/Empresas</option>
         </select>
       </div>
+
       <div class="form-group">
         <label class="title" for="mensagemContato">Mensagem (opcional)</label>
-        <textarea id="mensagemContato" name="mensagem" rows="4" placeholder="Como podemos ajudar?" style="resize: vertical;"></textarea>
+        <textarea id="mensagemContato" name="mensagem" rows="4" placeholder="Como podemos ajudar?"></textarea>
       </div>
 
       <div class="button-container">
-        <button type="button" onclick="enviarContato()">Enviar</button>
+        <button type="button" id="btnEnviarContato">Enviar</button>
       </div>
+
+      <div id="contato-feedback" class="feedback"></div>
     </form>
   </div>
+  <!-- ===== FIM DO CONTEÚDO PRINCIPAL ===== -->
 
-<footer class="footer">
-  &copy; 2025 CGS Consultoria & Mentoria. Todos os direitos reservados.
-</footer>
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="footer">
+    &copy; 2025 CGS Consultoria & Mentoria. Todos os direitos reservados.
+  </footer>
 
-
+  <!-- ===== SCRIPTS ===== -->
   <script src="js/main.js"></script>
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById("menu");
-      menu.classList.toggle('open');
-    }
+    /**
+     * Função que dispara o envio dos dados do formulário “Fale Conosco”
+     * para o Google Apps Script (aba “Contato”).
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+      const btnEnviar   = document.getElementById('btnEnviarContato');
+      const feedbackEl  = document.getElementById('contato-feedback');
+      const formEl      = document.getElementById('form-contato');
 
-    function enviarContato() {
-      const nome = document.getElementById("nomeContato").value.trim();
-      const email = document.getElementById("emailContato").value.trim();
-      const whatsapp = document.getElementById("whatsappContato").value.trim();
-      const servico = document.getElementById("tipoServico").value;
-      const mensagem = document.getElementById("mensagemContato").value.trim();
+      // Substitua a URL abaixo pela URL exata do seu Web App publicado (https://script.google.com/macros/s/SEU_ID/exec)
+      const SHEETS_URL = "https://script.google.com/macros/s/AKfycbyA0y3DFmyYzu7jzPIkT6oKVKBaR4vMagXLrTUrP2i6TnXCaJHO-9rjrkv2TOvSFHF6/exec";
 
-      if (!nome || !email || !whatsapp || !servico) {
-        alert("Preencha nome, email, WhatsApp e selecione o tipo de serviço antes de enviar.");
-        return;
-      }
+      btnEnviar.addEventListener('click', function() {
+        // Limpa feedback anterior
+        feedbackEl.style.display = 'none';
+        feedbackEl.innerText = '';
+        feedbackEl.classList.remove('success', 'error');
 
-      // Se quiser enviar para Google Sheets, substitua SHEETS_URL abaixo pelo seu WebApp
-      const SHEETS_URL = "https://script.google.com/macros/s/SEU_WEBAPP_ID/exec";
-      const params = new URLSearchParams({ nome, email, whatsapp, servico, mensagem });
-      fetch(`${SHEETS_URL}?${params.toString()}`, { method: "GET", mode: "no-cors" })
-        .then(() => {
-          alert("Obrigado! Em breve entraremos em contato.");
-          document.getElementById("form-contato").reset();
-        })
-        .catch(() => {
-          alert("Houve um problema ao enviar. Por favor, tente novamente mais tarde.");
+        // Captura valores
+        const nome     = document.getElementById('nomeContato').value.trim();
+        const email    = document.getElementById('emailContato').value.trim();
+        const whatsapp = document.getElementById('whatsappContato').value.trim();
+        const servico  = document.getElementById('tipoServico').value;
+        const mensagem = document.getElementById('mensagemContato').value.trim();
+
+        // Validação básica
+        if (!nome || !email || !whatsapp || !servico) {
+          feedbackEl.style.display = 'block';
+          feedbackEl.classList.add('error');
+          feedbackEl.innerText = "Por favor, preencha Nome, Email, WhatsApp e selecione o Tipo de Serviço.";
+          return;
+        }
+
+        // Desabilita botão e altera texto
+        btnEnviar.disabled = true;
+        btnEnviar.innerText = "Enviando...";
+
+        // Monta a query string para GET
+        const params = new URLSearchParams({
+          nome:     nome,
+          email:    email,
+          whatsapp: whatsapp,
+          servico:  servico,
+          mensagem: mensagem
         });
-    }
+
+        // Envia o GET (mode no-cors evita alertas CORS no fetch)
+        fetch(`${SHEETS_URL}?${params.toString()}`, {
+          method: 'GET',
+          mode: 'no-cors'
+        })
+        .then(() => {
+          // Exibe mensagem de sucesso
+          feedbackEl.style.display = 'block';
+          feedbackEl.classList.add('success');
+          feedbackEl.innerText = "Obrigado! Sua mensagem foi enviada com sucesso.";
+          formEl.reset();
+        })
+        .catch((err) => {
+          console.error('Erro ao enviar contato:', err);
+          feedbackEl.style.display = 'block';
+          feedbackEl.classList.add('error');
+          feedbackEl.innerText = "Houve um problema ao enviar. Por favor, tente novamente mais tarde.";
+        })
+        .finally(() => {
+          // Reabilita botão
+          btnEnviar.disabled = false;
+          btnEnviar.innerText = "Enviar";
+        });
+      });
+    });
   </script>
 </body>
 </html>
