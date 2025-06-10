@@ -2,6 +2,29 @@
    styles.css (paleta “tech‐acolhedora”)
    ============================== */
 
+/* 0) AJUSTES DO CABEÇALHO COM LOGO */
+.topbar .logo {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.topbar .logo img {
+  max-height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1f2a44;
+  padding: 12px 32px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
 /* 1) RESET / FONTES */
 * {
   box-sizing: border-box;
@@ -10,36 +33,19 @@
 }
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #f5f7fa;  /* Cinza‑claro de fundo */
-  color: #1f2a44;              /* Azul‑navy escuro para textos */
+  background-color: #f5f7fa;  /* Cinza-claro de fundo */
+  color: #1f2a44;              /* Azul-navy escuro para textos */
   line-height: 1.6;
 }
 
-/* 2) CABEÇALHO / MENU (TOPO fixo, responsivo) */
-.topbar {
-  background-color: #1f2a44;       /* Azul‑navy escuro */
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.topbar .logo {
-  color: #2dc4b1;                  /* Turquesa para o nome da marca */
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-decoration: none;
-}
+/* 2) MENU PRINCIPAL */
 .topbar .menu {
   list-style: none;
   display: flex;
   gap: 24px;
 }
 .topbar .menu a {
-  color: #f5f7fa;                  /* Quase branco para links */
+  color: #f5f7fa;
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
@@ -47,10 +53,10 @@ body {
 }
 .topbar .menu a:hover,
 .topbar .menu a.active {
-  color: #2dc4b1;                  /* Turquesa ao passar o mouse e ao link ativo */
+  color: #2dc4b1;
 }
 
-/* ÍCONE “HAMBURGER” para telas pequenas */
+/* ÍCONE HAMBURGER (desktop escondido) */
 .hamburger {
   display: none;
   cursor: pointer;
@@ -66,110 +72,94 @@ body {
   background-color: #2dc4b1;
 }
 
-/* RESPONSIVIDADE (telas até 768px) */
+/* 3) RESPONSIVIDADE ATÉ 768px */
 @media (max-width: 768px) {
   .topbar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
   }
   .hamburger {
     display: block;
   }
+
+  /* .menu só some no mobile; desktop continua flex */
   .topbar .menu {
+    display: none;
     flex-direction: column;
-    width: 100%;
-    margin-top: 12px;
-    display: none; /* inicial: escondido */
+    background-color: #1f2a44;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 12px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    z-index: 99;
   }
   .topbar .menu.open {
-    display: flex; /* quando receber a classe “open” vira visível */
+    display: flex;
   }
   .topbar .menu li {
-    margin: 8px 0;
+    margin: 8px 16px;
+  }
+  .topbar .menu a {
+    padding: 8px 16px;
   }
 }
 
-/* 3) CONTAINER CENTRAL (área branca com sombra) */
+/* 4) CONTAINER CENTRAL */
 .container {
   max-width: 900px;
   margin: 40px auto;
   background: #ffffff;
   border-radius: 8px;
-  padding: 40px 32px;  /* Aumentado para mais respiração */
+  padding: 40px 32px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* 4) TIPOGRAFIA E TÍTULOS */
-h1, h2, h3 {
-  color: #1f2a44;
-  margin-bottom: 16px;
-}
-p, li, label, small {
-  color: #1f2a44;
-}
-ul {
-  list-style: disc inside;
-  margin-left: 20px;
-}
+/* 5) TIPOGRAFIA E LISTAS */
+h1, h2, h3 { color: #1f2a44; margin-bottom: 16px; }
+p, li, label, small { color: #1f2a44; }
+ul { list-style: disc inside; margin-left: 20px; }
 
-/* 5) BOTÕES */
+/* 6) BOTÕES GERAIS */
 .btn {
   display: inline-block;
-  background-color: #2dc4b1;        /* Turquesa */
+  background-color: #2dc4b1;
   color: #ffffff;
   font-weight: 600;
   padding: 12px 24px;
-  text-decoration: none;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.btn:hover {
-  background-color: #25a693;        /* Levemente mais escuro */
-}
+.btn:hover { background-color: #25a693; }
 
-/* UTILITÁRIO para centralizar botões dentro do container */
-.btn-center {
-  text-align: center;
-  margin-top: 24px;
-}
+.btn-center { text-align: center; margin-top: 24px; }
 
-/* 6) FORMULÁRIOS E INPUTS */
-.form-group {
-  margin-bottom: 20px;
-}
-.form-group label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 6px;
-  color: #1f2a44;
-}
+/* 7) FORMULÁRIOS */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 500; margin-bottom: 6px; }
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group select,
 .form-group textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-family: inherit;
-  color: #1f2a44;
+  width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;
+  font-size: 1rem; color: #1f2a44;
 }
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-  outline: none;
-  border-color: #2dc4b1;
-  box-shadow: 0 0 0 2px rgba(45, 196, 177, 0.2);
+  outline: none; border-color: #2dc4b1;
+  box-shadow: 0 0 0 2px rgba(45,196,177,0.2);
 }
 
-/* 7) INSTRUÇÕES DO TESTE DISC (caixinha azul‑claro) */
+/* 8) INSTRUÇÕES DISC */
 .instructions {
-  background: #e8f7f5;              /* Turquesa muito claro */
-  border-left: 4px solid #2dc4b1;   /* Borda turquesa */
+  background: #e8f7f5;
+  border-left: 4px solid #2dc4b1;
   padding: 12px 16px;
   margin-bottom: 24px;
   border-radius: 4px;
@@ -177,7 +167,7 @@ ul {
   font-size: 0.95rem;
 }
 
-/* 8) RODAPÉ */
+/* 9) RODAPÉ */
 .footer {
   text-align: center;
   padding: 24px 0;
@@ -186,89 +176,23 @@ ul {
   background-color: #f5f7fa;
 }
 
-/* =============================
-   9) ESCALA LIKERT PARA TESTE DISC
-   ============================= */
-.form-group-question {
-  margin-bottom: 32px;
-}
-.form-group-question .question {
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #1f2a44;
-}
-
-/* Container dos círculos: usa grid para 5 colunas iguais */
-.likert-scale {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 16px;
-  max-width: 480px;
-  margin: 0 auto 8px;  /* centraliza e dá margem abaixo */
-}
-
-/* Cada label engloba o input + span */
-.likert-scale label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Remove o input de vista e estiliza o span para círculo grande */
-.likert-scale input {
-  display: none;
-}
+/* 10) ESCALA LIKERT */
+.form-group-question { margin-bottom: 32px; }
+.form-group-question .question { margin-bottom: 12px; font-size: 1.1rem; font-weight: 500; }
+.likert-scale { display: grid; grid-template-columns: repeat(5,1fr); gap:16px; max-width:480px; margin:0 auto 8px; }
+.likert-scale label { display: flex; justify-content:center; align-items:center; }
+.likert-scale input { display:none; }
 .likert-scale span {
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  line-height: 48px;
-  text-align: center;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  color: #1f2a44;
-  font-weight: 600;
-  transition: all 0.2s ease;
+  display:inline-block; width:48px; height:48px; line-height:48px; text-align:center;
+  border:2px solid #ccc; border-radius:50%; font-weight:600; color:#1f2a44;
+  transition:all .2s ease;
 }
-/* Conteúdo numérico via pseudo – não precisa mudar */
-.likert-scale label:nth-child(1) span::after { content: "1"; }
-.likert-scale label:nth-child(2) span::after { content: "2"; }
-.likert-scale label:nth-child(3) span::after { content: "3"; }
-.likert-scale label:nth-child(4) span::after { content: "4"; }
-.likert-scale label:nth-child(5) span::after { content: "5"; }
+.likert-scale span:hover { border-color:#2dc4b1; color:#2dc4b1; }
+.likert-scale input:checked + span { background-color:#2dc4b1; border-color:#2dc4b1; color:#fff; }
+.likert-legend { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; max-width:480px; margin:0 auto 24px; font-size:.85rem; color:#555; text-align:center; }
+.likert-legend span { padding-top:4px; }
 
-/* Quando selecionado, pinta o círculo */
-.likert-scale input:checked + span {
-  background-color: #2dc4b1;
-  border-color: #2dc4b1;
-  color: #ffffff;
-}
-
-/* Hover para círculos não selecionados */
-.likert-scale span:hover {
-  border-color: #2dc4b1;
-  color: #2dc4b1;
-}
-
-/* Legenda: grid idêntico ao .likert-scale, para cada coluna abaixo do seu círculo */
-.likert-legend {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 16px;
-  max-width: 480px;
-  margin: 0 auto 24px;
-  font-size: 0.85rem;
-  color: #555;
-  text-align: center;
-  line-height: 1.2;
-}
-.likert-legend span {
-  display: block;
-  padding-top: 4px;
-}
-
-/* 10) BOTÃO DO RESULTADO */
-.button-container { text-align: center; margin-top: 32px; }
-.button-container button { background-color: #2dc4b1; border: none; color: #fff; font-weight: 600; padding: 14px 36px; border-radius: 6px; cursor: pointer; font-size: 1.1rem; transition: background-color 0.2s ease; }
-.button-container button:hover { background-color: #25a693; }
+/* 11) BOTÃO RESULTADO */
+.button-container { text-align: center; margin-top:32px; }
+.button-container button { background-color:#2dc4b1; border:none; color:#fff; font-weight:600; padding:14px 36px; border-radius:6px; font-size:1.1rem; cursor:pointer; transition: background-color .2s ease; }
+.button-container button:hover { background-color:#25a693; }
