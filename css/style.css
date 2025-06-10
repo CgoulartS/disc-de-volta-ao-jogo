@@ -10,14 +10,14 @@
 }
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #f5f7fa;  /* Cinza‐claro de fundo */
-  color: #1f2a44;              /* Azul‐navy escuro para textos */
+  background-color: #f5f7fa;  /* Cinza‑claro de fundo */
+  color: #1f2a44;              /* Azul‑navy escuro para textos */
   line-height: 1.6;
 }
 
 /* 2) CABEÇALHO / MENU (TOPO fixo, responsivo) */
 .topbar {
-  background-color: #1f2a44;       /* Azul‐navy escuro */
+  background-color: #1f2a44;       /* Azul‑navy escuro */
   padding: 16px 24px;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@ body {
   margin: 40px auto;
   background: #ffffff;
   border-radius: 8px;
-  padding: 32px;
+  padding: 40px 32px;  /* Aumentado para mais respiração */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -166,7 +166,7 @@ ul {
   box-shadow: 0 0 0 2px rgba(45, 196, 177, 0.2);
 }
 
-/* 7) INSTRUÇÕES DO TESTE DISC (caixinha azul‐claro) */
+/* 7) INSTRUÇÕES DO TESTE DISC (caixinha azul‑claro) */
 .instructions {
   background: #e8f7f5;              /* Turquesa muito claro */
   border-left: 4px solid #2dc4b1;   /* Borda turquesa */
@@ -186,22 +186,89 @@ ul {
   background-color: #f5f7fa;
 }
 
-/* 9) ESCALA LIKERT PARA TESTE DISC */
-.form-group-question { margin-bottom: 24px; }
-.form-group-question .question { margin-bottom: 8px; font-weight: 500; }
-.likert-scale { display: flex; justify-content: space-between; max-width: 400px; margin: 8px 0; }
-.likert-scale label { cursor: pointer; }
-.likert-scale input { display: none; }
-.likert-scale span { display: inline-block; width: 36px; height: 36px; line-height: 36px; text-align: center; border-radius: 50%; border: 1px solid #ccc; color: #1f2a44; font-weight: 600; }
+/* =============================
+   9) ESCALA LIKERT PARA TESTE DISC
+   ============================= */
+.form-group-question {
+  margin-bottom: 32px;
+}
+.form-group-question .question {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1f2a44;
+}
+
+/* Container dos círculos: usa grid para 5 colunas iguais */
+.likert-scale {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 16px;
+  max-width: 480px;
+  margin: 0 auto 8px;  /* centraliza e dá margem abaixo */
+}
+
+/* Cada label engloba o input + span */
+.likert-scale label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Remove o input de vista e estiliza o span para círculo grande */
+.likert-scale input {
+  display: none;
+}
+.likert-scale span {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  color: #1f2a44;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+/* Conteúdo numérico via pseudo – não precisa mudar */
 .likert-scale label:nth-child(1) span::after { content: "1"; }
 .likert-scale label:nth-child(2) span::after { content: "2"; }
 .likert-scale label:nth-child(3) span::after { content: "3"; }
 .likert-scale label:nth-child(4) span::after { content: "4"; }
 .likert-scale label:nth-child(5) span::after { content: "5"; }
-.likert-scale input:checked + span { background-color: #2dc4b1; border-color: #2dc4b1; color: #fff; }
-.likert-legend { display: flex; justify-content: space-between; max-width: 400px; font-size: 0.85rem; margin-bottom: 8px; }
+
+/* Quando selecionado, pinta o círculo */
+.likert-scale input:checked + span {
+  background-color: #2dc4b1;
+  border-color: #2dc4b1;
+  color: #ffffff;
+}
+
+/* Hover para círculos não selecionados */
+.likert-scale span:hover {
+  border-color: #2dc4b1;
+  color: #2dc4b1;
+}
+
+/* Legenda: grid idêntico ao .likert-scale, para cada coluna abaixo do seu círculo */
+.likert-legend {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 16px;
+  max-width: 480px;
+  margin: 0 auto 24px;
+  font-size: 0.85rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.2;
+}
+.likert-legend span {
+  display: block;
+  padding-top: 4px;
+}
 
 /* 10) BOTÃO DO RESULTADO */
 .button-container { text-align: center; margin-top: 32px; }
-.button-container button { background-color: #2dc4b1; border: none; color: #fff; font-weight: 600; padding: 12px 32px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background-color 0.2s ease; }
+.button-container button { background-color: #2dc4b1; border: none; color: #fff; font-weight: 600; padding: 14px 36px; border-radius: 6px; cursor: pointer; font-size: 1.1rem; transition: background-color 0.2s ease; }
 .button-container button:hover { background-color: #25a693; }
