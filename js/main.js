@@ -2,8 +2,11 @@
 
 // Abre/fecha menu no mobile
 function toggleMenu() {
-  const menu = document.getElementById("menu");
-  menu.classList.toggle("open");
+  // Procura o elemento de menu dentro do cabeçalho
+  const menu = document.querySelector('.topbar .menu');
+  if (menu) {
+    menu.classList.toggle('open');
+  }
 }
 
 // (Opcional) Scroll suave para links internos
