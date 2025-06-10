@@ -202,19 +202,23 @@
         btnEnviar.disabled = true;
         btnEnviar.innerText = "Enviando...";
 
-        // Monta a query string para GET
+        // Monta corpo para POST
         const params = new URLSearchParams({
-          nome:     nome,
-          email:    email,
-          whatsapp: whatsapp,
-          servico:  servico,
-          mensagem: mensagem
+          nome,
+          email,
+          whatsapp,
+          servico,
+          mensagem
         });
 
-        // Envia o GET (mode no-cors evita alertas CORS no fetch)
-        fetch(`${SHEETS_URL}?${params.toString()}`, {
-          method: 'GET',
-          mode: 'no-cors'
+        // Envia via POST ao Apps Script
+        fetch(SHEETS_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: params.toString()
         })
         .then(() => {
           // Exibe mensagem de sucesso
