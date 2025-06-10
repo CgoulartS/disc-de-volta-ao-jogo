@@ -186,3 +186,22 @@ ul {
   background-color: #f5f7fa;
 }
 
+/* 9) ESCALA LIKERT PARA TESTE DISC */
+.form-group-question { margin-bottom: 24px; }
+.form-group-question .question { margin-bottom: 8px; font-weight: 500; }
+.likert-scale { display: flex; justify-content: space-between; max-width: 400px; margin: 8px 0; }
+.likert-scale label { cursor: pointer; }
+.likert-scale input { display: none; }
+.likert-scale span { display: inline-block; width: 36px; height: 36px; line-height: 36px; text-align: center; border-radius: 50%; border: 1px solid #ccc; color: #1f2a44; font-weight: 600; }
+.likert-scale label:nth-child(1) span::after { content: "1"; }
+.likert-scale label:nth-child(2) span::after { content: "2"; }
+.likert-scale label:nth-child(3) span::after { content: "3"; }
+.likert-scale label:nth-child(4) span::after { content: "4"; }
+.likert-scale label:nth-child(5) span::after { content: "5"; }
+.likert-scale input:checked + span { background-color: #2dc4b1; border-color: #2dc4b1; color: #fff; }
+.likert-legend { display: flex; justify-content: space-between; max-width: 400px; font-size: 0.85rem; margin-bottom: 8px; }
+
+/* 10) BOTÃO DO RESULTADO */
+.button-container { text-align: center; margin-top: 32px; }
+.button-container button { background-color: #2dc4b1; border: none; color: #fff; font-weight: 600; padding: 12px 32px; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background-color 0.2s ease; }
+.button-container button:hover { background-color: #25a693; }

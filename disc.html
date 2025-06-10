@@ -38,10 +38,10 @@
 
   <!-- Formulário de preenchimento -->
   <div class="container" id="form-container">
-    <p style="margin-bottom:20px; font-size:15px; color:#333;">
-      <strong>Instruções:</strong> Para cada afirmação abaixo, escolha um valor de 1 a 5 que melhor indique seu grau de concordância:
-      <br>1 = Discordo totalmente, 2 = Discordo, 3 = Neutro, 4 = Concordo, 5 = Concordo totalmente.
-    </p>
+    <div class="instructions">
+      <strong>Instruções:</strong> Para cada afirmação abaixo, escolha um valor de 1 a 5 que melhor indique seu grau de concordância:<br>
+      1 = Discordo totalmente, 2 = Discordo, 3 = Neutro, 4 = Concordo, 5 = Concordo totalmente.
+    </div>
 
     <div class="form-group">
       <label class="title" for="nome">Nome completo</label>
@@ -361,7 +361,7 @@
     </div>
 
     <div class="button-container">
-      <button onclick="processarFormulario()">Ver Resultado</button>
+      <button class="btn" onclick="processarFormulario()">Ver Resultado</button>
     </div>
   </div>
 
