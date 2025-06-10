@@ -186,7 +186,7 @@ ul {
   background-color: #f5f7fa;
 }
 
-/* 9) ESCALA LIKERT PARA TESTE DISC */
+/* 9) ESCALA LIKERT PARA TESTE DISC (merge resolvido) */
 .form-group-question { margin-bottom: 24px; }
 .form-group-question .question { margin-bottom: 8px; font-weight: 500; }
 .likert-scale { display: flex; justify-content: space-between; max-width: 400px; margin: 8px 0; }
